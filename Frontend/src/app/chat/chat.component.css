@@ -1,0 +1,15 @@
+.title >div{display: inline-block;}
+.title .left{    width: 42%;text-align: left;}
+.title .rest{width:57%;text-align: left;}
+.title a{text-align: left;display: inline-block;width: 50px;}
+.main{display:inline-block;}
+.main > div{display: inline-block;vertical-align: top;}
+.main .left{width:69%;border:1px solid #000;}
+.main .right{width:30%; height: 200px;}
+.main .right .message textarea{border:1px solid #000;height: 150px;}
+.main .right .send{height: 35px;margin-top: 15px;}
+.main .right .send .button .btn{border-radius: 5px;padding: 10px 50px;}
+.main ul{list-style: none;}
+.main ul li.ownByme{padding-left: 60px;}
+.main ul li > div{text-align: left;}
+.main ul li img{width:60px;}
