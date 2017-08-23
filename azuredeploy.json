@@ -11,51 +11,51 @@
       },
       "oauthGitHubClientID": {
         "type": "string",
-        "defaultValue": "",
+        "defaultValue": "0c4dcc595b286ed3e5c0",
         "metadata": {
           "description": ""
         }
       },
       "oauthGitHubClientSecret": {
         "type": "string",
-        "defaultValue": "",
+        "defaultValue": "d13f279603ff0988241ee998807c9724c0a2a210",
         "metadata": {
           "description": ""
         }
       },
       "oauthLinkedInClientId": {
         "type": "string",
-        "defaultValue": "",
+        "defaultValue": "810gruworj798u",
         "metadata": {
           "description": ""
         }
       },
       "oauthLinkedInClientSecret": {
         "type": "string",
-        "defaultValue": "",
+        "defaultValue": "Xl0iUxxlUyHYTMzN",
         "metadata": {
           "description": ""
         }
       },
       "databaseAdminLoginName": {
         "type": "string",
-        "defaultValue": "",
+        "defaultValue": "developer_finder",
         "metadata": {
-          "description": ""
+          "description": "Admin login name cannot be 'azure_superuser', 'admin', 'administrator', 'root', 'guest' or 'public'."
         }
       },
       "databaseAdminLoginPassword": {
         "type": "securestring",
         "defaultValue": "",
         "metadata": {
-          "description": "Admin login name cannot be 'azure_superuser', 'admin', 'administrator', 'root', 'guest' or 'public'."
+          "description": "This field should be between 8 and 128 characters long. Your password must contain characters from three of the following categories – English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, etc.)."
         }
       },
       "rubyChatDockerImage": {
         "type": "string",
         "defaultValue": "tylerlu/ruby-chat",
         "metadata": {
-          "description": "This field should be between 8 and 128 characters long. Your password must contain characters from three of the following categories – English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, etc.)."
+          "description": ""
         }
       },
       "sourceCodeRepositoryURL": {
@@ -90,6 +90,7 @@
       "applicationInsightsName":"[parameters('webAppName')]",
       "webAppServicePlanName": "[variables('webAppName')]",
       "chatAppServicePlanName": "[variables('chatAppName')]",
+      "functionAppServicePlanName": "[variables('functionAppName')]",
       "mySQLServerName": "[variables('webAppName')]",
       "postgreSQLServerName": "[variables('chatAppName')]",
       "mySQLDatabaseName": "developer_finder",
@@ -124,7 +125,7 @@
         "type": "microsoft.insights/components",
         "name": "[variables('applicationInsightsName')]",
         "apiVersion": "2014-08-01",
-        "location": "[variables('location')]",
+        "location": "East US",
         "kind": "other",
         "properties": {
             "ApplicationId": "[variables('applicationInsightsName')",    
@@ -135,10 +136,7 @@
         "type": "Microsoft.Web/serverfarms",
         "sku": {
           "name": "B1",
-          "tier": "Basic",
-          "size": "B1",
-          "family": "B",
-          "capacity": 1
+          "tier": "Basic"
         },
         "kind": "linux",
         "name": "[variables('webAppServicePlanName')]",
@@ -160,10 +158,7 @@
         "type": "Microsoft.Web/serverfarms",
         "sku": {
           "name": "B1",
-          "tier": "Basic",
-          "size": "B1",
-          "family": "B",
-          "capacity": 1
+          "tier": "Basic"
         },
         "kind": "linux",
         "name": "[variables('chatAppServicePlanName')]",
@@ -179,6 +174,21 @@
             "reserved": true,
             "targetWorkerCount": 0,
             "targetWorkerSizeId": 0
+        }
+      },
+      {
+        "name": "[variables('functionAppServicePlanName')]",
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2016-09-01",
+        "location": "[variables('location')]",
+        "sku": {
+          "name": "B1",
+          "tier": "Basic"
+        },
+        "properties": {
+            "name": "[variables('functionAppServicePlanName')]",
+            "reserved": false,
+            "numberOfWorkers": "1"
         }
       },
       {
@@ -279,7 +289,11 @@
         "location": "[variables('location')]",
         "properties": {
             "name": "[variables('functionAppName')]",
-            "clientAffinityEnabled": false
+            "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]",
+            "clientAffinityEnabled": false,
+            "siteConfig": {
+              "AlwaysOn": true
+            }
         },
         "resources": [
           {
@@ -289,16 +303,17 @@
             "properties": {
               "FUNCTIONS_EXTENSION_VERSION": "~1",
               "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
-              "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview').key1)]",
-              "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview').key1)]",
-              "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview').key1)]",
+              "WEBSITE_CONTENTSHARE": "[concat(variables('functionAppName'), substring(uniqueString(resourceGroup().id), 0, 4))]",
+              "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
+              "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
+              "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
               "MS_ApplicationInsightsInstrumentationKey": "[reference(concat('microsoft.insights/components/', variables('applicationInsightsName'))).InstrumentationKey]",
               "command": "AppServices\\FunctionApp\\deploy.cmd"
             },
             "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', variables('webAppName'))]",
-              "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-              "[resourceId('microsoft.insights/components', parameters('applicationInsightsName'))]"
+              "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
+              "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+              "[resourceId('microsoft.insights/components', variables('applicationInsightsName'))]"
             ]
           },
           {
@@ -315,6 +330,9 @@
               "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
             ]
           }
+        ],
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]"
         ]
       },
       {
