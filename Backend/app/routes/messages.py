@@ -3,6 +3,7 @@ from datetime import datetime
 import time,json,requests
 from app.models.message import Message
 from app.models.messageSummary import MessageSummary
+from app.models.profile import Profile
 from flask import request
 from flask_login import login_required, current_user
 from flask_restful import Resource
@@ -24,7 +25,8 @@ def toMessage(msg):
     return m
 
 def toSummary(summary):
-    return MessageSummary(summary["from"],summary["unread_messages_count"])
+    userProfile, created = Profile.get_or_create(id=summary["from"])
+    return MessageSummary(summary["from"],userProfile.name,summary["unread_messages_count"])
 
 class MessagesResource(Resource):
     
