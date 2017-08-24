@@ -1,15 +1,18 @@
 .title >div{display: inline-block;}
-.title .left{    width: 42%;text-align: left;}
+.title .left{width: 42%;}
 .title .rest{width:57%;text-align: left;}
 .title a{text-align: left;display: inline-block;width: 50px;}
-.main{display:inline-block;}
+.main{display:inline-block;width:1168px;}
 .main > div{display: inline-block;vertical-align: top;}
-.main .left{width:69%;border:1px solid #000;}
-.main .right{width:30%; height: 200px;}
-.main .right .message textarea{border:1px solid #000;height: 150px;}
-.main .right .send{height: 35px;margin-top: 15px;}
-.main .right .send .button .btn{border-radius: 5px;padding: 10px 50px;}
+.main >div.left{width:66%;border:1px solid #000;min-height:600px;margin-right: 20px;}
+.main >div.right{width:30%; height: 500px;}
+.main >div.right .message textarea{border:1px solid #000;height: 500px;width:100%;}
+.main >div.right .send{height: 35px;margin-top: 15px;}
+.main >div.right .send .button .btn{border-radius: 5px;padding: 10px 50px;}
 .main ul{list-style: none;}
 .main ul li.ownByme{padding-left: 60px;}
 .main ul li > div{text-align: left;}
+.main ul li > div.top{padding-right:30px;}
+.main ul li > div.top>*{vertical-align: middle;}
+.main ul li > div.top>span.created{float:right;}
 .main ul li img{width:60px;}

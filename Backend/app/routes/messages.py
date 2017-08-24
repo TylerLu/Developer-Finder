@@ -1,21 +1,39 @@
-from app import api
+from app import api,settings
 from datetime import datetime
-import time
+import time,json,requests
 from app.models.message import Message
 from app.models.messageSummary import MessageSummary
 from flask import request
 from flask_login import login_required, current_user
 from flask_restful import Resource
 
+def buildRubyApi(api):
+    return "{0}/{1}".format(settings.RUBY_CHAT_URL,api)
+
+def requestRest(api,type,data):
+    requestUrl = buildRubyApi(api)
+    if type == 'get':
+        ret = requests.get(requestUrl,params=data)
+    elif type == 'post':
+        ret = requests.post(requestUrl,json=data)
+    return ret.json()
+
+def toMessage(msg):
+    created = datetime.strptime(msg["created_at"],"%Y-%m-%dT%H:%M:%S.%fZ")
+    m = Message(msg["id"],msg["from"],msg["to"],msg["body"],created)
+    return m
+
+def toSummary(summary):
+    return MessageSummary(summary["from"],summary["unread_messages_count"])
+
 class MessagesResource(Resource):
     
     @login_required
     def get(self,id):
         uid=current_user.id
-        print('currentUserId:{0}'.format(uid))
-        print('friendId:{0}'.format(id))
-        messages = [Message(1,10000,10001,"testContent",datetime.now())]
-        return list(map(lambda m:m.toJson() , messages))
+        unreadMsgs = requestRest('/api/messages/unread','get',{"to":uid,"from":id})
+        unreadMsgs = map(lambda m:toMessage(m),unreadMsgs)
+        return list(map(lambda m:m.toJson() ,unreadMsgs))
 
 class MessagePostResource(Resource):
     
@@ -24,16 +42,14 @@ class MessagePostResource(Resource):
         messageContent = request.json['content']
         fromUser = current_user.id
         toUser= request.json['to']
-        print('toUser:{0}'.format(toUser))
-        print('fromUser:{0}'.format(fromUser))
-        print('content:{0}'.format(messageContent))
-        #ruby post message
-        return 1,201 
+        resp = requestRest('/api/messages','post',{'from':fromUser,'to':toUser,'body':messageContent})
+        return resp
 
 class MessageSummaryResource(Resource):
     @login_required
     def get(self):
-        messageSummarys = [MessageSummary(10000,2)]
+        notifications = requestRest('/api/messages/summary','get',{'to':current_user.id})
+        messageSummarys = map(lambda n:toSummary(n),notifications)
         return list(map(lambda m:m.toJson() , messageSummarys))
 
 api.add_resource(MessagePostResource, '/api/messages')

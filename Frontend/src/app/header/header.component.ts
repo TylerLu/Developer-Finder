@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tryReceiveMessageNotifications();
+         setInterval(()=> {this.tryReceiveMessageNotifications()},Constants.chatRequestInterval);
     }
 
     tryReceiveMessageNotifications(){

@@ -14,6 +14,7 @@ export class Constants {
     public static readonly avatarImgUrl = 'assets/images/profile-none.png';
 
     public static readonly seedFriendIdBegin = 10001;
+    public static readonly chatRequestInterval = 1000 * 10;
 
     // Cookie names
     public static readonly AuthKey = "is_authenticated";

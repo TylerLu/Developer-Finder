@@ -44,8 +44,9 @@ export class ChatComponent implements OnInit {
                  results => {
                     this.friendProfile = results[1];
                     this.currentUserProfile = results[0];
-                    if(callBack)
-                      callBack(this);
+                    if(callBack){
+                        setInterval(()=> {this.getReceivedMessages(this)},Constants.chatRequestInterval);
+                    }
                 },
                 error => console.log(`onError: ${error}`),
     );
@@ -79,7 +80,7 @@ export class ChatComponent implements OnInit {
                  .getLatestMessages(chatComponent.friendProfile.id.toString(),chatComponent.friendProfile)
                  .subscribe(
                    result=>{
-                     chatComponent.existedMessages = result;
+                     chatComponent.existedMessages = chatComponent.existedMessages.concat(result);
                    },
                    error => console.log(`onError: ${error}`),
                  );
