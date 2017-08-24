@@ -1,6 +1,6 @@
 <header [isLoginPage]="false"></header>
 <div class="profile container">
-    <h1>My Profile</h1>
+    <h1>{{isEditMode?'My ':''}}Profile</h1>
     <div class="left">
         <div class="top">
             <img alt="{{currentProfile.name}}" class="avatar rounded-2" width="72" src="{{currentProfile.avatar_url}}" />
@@ -23,7 +23,11 @@
         </div>
         <div class="bottom">
             <div class="bio">{{currentProfile.bio}}</div>
-            <div class="connect-link" *ngIf="hasAccountNotConnected" ><a href="/connect" >Back to connect</a></div>
+            <div class="button-area" >
+                <button *ngIf="isEditMode"  class="profile-btn" (click)="saveProfile()">Save</button>
+                <button class="profile-btn" (click)="goTo('connect')"  *ngIf="hasAccountNotConnected">Back to Connect</button>
+                <button *ngIf="!isEditMode" class="profile-btn" (click)="goTo('search')">Go to Search</button>
+            </div>
         </div>
     </div>
     <div class="right">
@@ -43,7 +47,7 @@
                 </td>
             </tr>
             <tr>
-                <th>LinkedIn public profile</th>
+                <th>LinkedIn public profile URL</th>
                 <td>
                     <a target="_blank" href="{{currentProfile.linkedin_public_profile_Url}}">{{currentProfile.linkedin_public_profile_Url}}</a>
                 </td>
@@ -57,10 +61,6 @@
             <tr>
                 <th>LinkedIn Connections</th>
                 <td>{{currentProfile.num_connections}}</td>
-            </tr>
-            <tr>
-                <th>Specialties</th>
-                <td>{{currentProfile.specialties}}</td>
             </tr>
             <tr>
                 <th>Number of Public Repos</th>
@@ -88,7 +88,4 @@
             </tr>
         </table>
     </div>
-
-
-    <button *ngIf="isEditMode"  class="save" (click)="saveProfile()">Save</button>
 </div>

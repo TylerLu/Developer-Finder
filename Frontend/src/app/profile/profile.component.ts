@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
                          .subscribe(profile=>{
                            this.currentProfile = profile;
                            this.tryParsePosition();
-                           this.tryUpdatePhotoSrc();
                            this.checkConnectedAccounts();
                          });
     }else{
@@ -47,7 +46,6 @@ export class ProfileComponent implements OnInit {
                          .subscribe(profile=>{
                            this.currentProfile = profile;
                            this.tryParsePosition();
-                           this.tryUpdatePhotoSrc();
                            this.friendService.getFriends()
                                              .subscribe(
                                                (friends)=>{
@@ -76,11 +74,6 @@ export class ProfileComponent implements OnInit {
        this.currentProfile.position = this.profileService.getProfilePosition(this.currentProfile);
   }
 
-  tryUpdatePhotoSrc():void{
-    if(!this.currentProfile.avatar_url){
-        this.currentProfile.avatar_url = Constants.avatarImgUrl;
-    }
-  }
 
   doChat(id:string):void{
     id && this.router.navigate(['chat'],id);
@@ -93,6 +86,10 @@ export class ProfileComponent implements OnInit {
                          resp=>{location.reload();},
                          error=>{console.log(error);}
                        );
+  }
+
+  goTo(url:string):void{
+    this.router.navigate([url]);
   }
 
   private checkIsEditMode():void{

@@ -39,6 +39,8 @@ export class ProfileService {
       let activeObject: ReplaySubject<Profile> = new ReplaySubject(1);
       this.dataService.getObject<Profile>(Constants.WebAPI.profileUrl + "/" + id)
                   .subscribe((profile) => {
+                        if(!profile.avatar_url)
+                            profile.avatar_url = Constants.avatarImgUrl;
                         activeObject.next(profile);
                     },
                     (error) => {
@@ -46,6 +48,7 @@ export class ProfileService {
                     });
       return activeObject;
    }
+
 
    public getProfilePosition(profile:Profile){
        if(profile==null)
