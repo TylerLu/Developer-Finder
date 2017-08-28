@@ -8,7 +8,7 @@
                 <li class="name"><h3>{{currentProfile.name}}</h3></li>
                 <li>{{currentProfile.company}}</li>
                 <li>{{currentProfile.location}}</li>
-                <li class="phone">Phone <input class="phoneNumber" [(ngModel)]="currentProfile.phone_number" type="text" [disabled]="!isEditMode" /></li>
+                <li class="phone">Phone{{isEditMode?"":":"}} <input class="phoneNumber" [(ngModel)]="currentProfile.phone_number" type="text" [hidden]="!isEditMode" /><label [hidden]="isEditMode">{{currentProfile.phone_number}}</label></li>
                 <li *ngIf="!isEditMode">
                     <div class="function">
                         <div class="chat bg-img"  (click)="doChat(currentProfile.id)">
@@ -26,7 +26,7 @@
             <div class="button-area" >
                 <button *ngIf="isEditMode"  class="profile-btn" (click)="saveProfile()">Save</button>
                 <button class="profile-btn" (click)="goTo('connect')"  *ngIf="hasAccountNotConnected">Back to Connect</button>
-                <button *ngIf="!isEditMode" class="profile-btn" (click)="goTo('search')">Go to Search</button>
+                <button class="profile-btn" (click)="goTo('search')">Go to Search</button>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
             </tr>
              <tr>
                 <th>Programming Skills</th>
-                <td><textarea class="skills" [(ngModel)]="currentProfile.skills" type="text" [disabled]="!isEditMode"></textarea></td>
+                <td><textarea class="skills" [(ngModel)]="currentProfile.skills" type="text" [hidden]="!isEditMode"></textarea><label [hidden]="isEditMode">{{currentProfile.skills}}</label></td>
             </tr>
             <tr>
                 <th>Blog</th>

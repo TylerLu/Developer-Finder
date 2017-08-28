@@ -23,6 +23,7 @@ export class FriendService {
                             for(let i = 0;i < suggestedProfiles.length;i++){
                                 let friend = new Friend();
                                 friend.friendProfile = suggestedProfiles[i];
+                                this.addDefaultAvatar(friend.friendProfile);
                                 friend.friendProfile.position = this.profileService.getProfilePosition(friend.friendProfile);
                                 friend.isAlreadyFriend = false;
                                 suggestedFriends.push(friend);
@@ -54,7 +55,7 @@ export class FriendService {
        this.dataService.post(Constants.WebAPI.friendsUrl,{"friend_id":friendId})
                        .subscribe(
                         resp=>{
-                            activeObject.next(resp.json()==friendId);
+                            activeObject.next(resp==friendId);
                         },
                         error=>activeObject.error(error));
        return activeObject;
@@ -74,6 +75,7 @@ export class FriendService {
                                         continue;
                                      let friend = new Friend();
                                      friend.friendProfile = searchedProfiles[i];
+                                     this.addDefaultAvatar(friend.friendProfile);
                                      friend.friendProfile.position = this.profileService.getProfilePosition(friend.friendProfile);
                                      friend.isAlreadyFriend = friends.filter(f=>f.friendProfile.id==friend.friendProfile.id).length>0;
                                      searchedFriends.push(friend);
@@ -84,6 +86,11 @@ export class FriendService {
                       },
                       (error)=>{activeObject.error(error)});
       return activeObject;
+   }
+
+   private addDefaultAvatar(profile:Profile){
+        if(!profile.avatar_url)
+            profile.avatar_url = Constants.avatarImgUrl;
    }
 
 }

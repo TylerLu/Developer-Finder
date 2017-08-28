@@ -21,6 +21,8 @@ export class ChatComponent implements OnInit {
   currentUserProfile:Profile;
 
   msgContent:string = '';
+  btnDisabled:Boolean = false;
+  isPageFromNotification:Boolean = true;
 
   self:ChatComponent;
   constructor(private chatService: ChatService,
@@ -31,7 +33,24 @@ export class ChatComponent implements OnInit {
     if(!this.auth.isLogin()){
       this.auth.reLogin();
     }
+    this.isPageFromNotification = this.checkFromSource();
     this.initProfiles(UrlHelper.getQueryId(),this.getReceivedMessages);
+  }
+
+  checkFromSource(){
+    let chatFrom = UrlHelper.getQueryFrom();
+    console.log(chatFrom);
+    return chatFrom == Constants.fromUnreadToChat;
+  }
+
+  trySendSMS(){
+      if(this.isPageFromNotification)
+        return;
+      let sendMsgs = this.existedMessages.filter(message=>message.ownByMe);
+      if(sendMsgs.length>1)
+        return;
+      //console.log('begin send sms');
+      this.chatService.sendSMS(sendMsgs[0].profile.phone_number,sendMsgs[0].content);
   }
 
   initProfiles(friendId:number,callBack){
@@ -65,24 +84,21 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(){
+    this.btnDisabled = true;
      this.chatService
-         .sendMessage(this.friendProfile.id.toString(),this.msgContent)
+         .sendMessage(this.friendProfile.id.toString(),this.msgContent,this.currentUserProfile)
          .subscribe(
-             result=>{
-               this.buildNewMessage();
-               this.msgContent = '';
+             msg=>{
+                this.btnDisabled = false;
+                this.existedMessages.push(msg);
+                this.msgContent = '';
+                this.trySendSMS();
              },
-             error => console.log(`onError: ${error}`),
+             error => {
+                console.log(`onError: ${error}`);
+                this.btnDisabled = false;
+             }
          );
-  }
-
-  buildNewMessage(){
-    let msg = new ChatMessage();
-    msg.content = this.msgContent;
-    msg.created = CommonUtil.formatDate(new Date());
-    msg.ownByMe = true;
-    msg.profile = this.currentUserProfile;
-    this.existedMessages.push(msg);
   }
 
 }

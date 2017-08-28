@@ -13,5 +13,5 @@ class Message(object):
             'fromUser': str(self.fromUser),
             'toUser': str(self.toUser),
             'content':self.content,
-            'created':self.created.strftime("%Y-%m-%d %H:%M:%S")
+            'created':self.created
         }

@@ -1,12 +1,12 @@
 .profile.container { width: 1200px; margin-left: auto; margin-right: auto;  text-align: center; }
-.profile.container .left{ width: 49%;display: inline-block;vertical-align: top; background-color: #F2F2F2;min-height:525px;}
+.profile.container .left{ width: 49%;display: inline-block;vertical-align: top; background-color: #F2F2F2;min-height:525px;padding-bottom:30px;}
 .profile.container .left .top>*{ display: inline-block;width:60%;vertical-align: top; }
 .profile.container .left .top>img{ width:171px;height:171px; margin-right: 35px;}
 .profile.container .left .top>ul{list-style: none;padding: 0;margin: 0; }
 .profile.container .left .top>ul li{text-align: left; min-height: 25px;}
 .profile.container .left .top>ul li.phone{margin-top:10px;}
 .profile.container .left .top>ul li input{width:220px}
-.profile.container .left .bottom .bio{min-height:200px;}
+.profile.container .left .bottom .bio{min-height:200px;text-align: justify;padding-left: 32px;padding-right: 35px;}
 .profile.container .left .bottom .button-area{padding-left: 10px;}
 .profile.container .right{ width: 49%;display: inline-block; }
 .profile .h1 { line-height: 2em; font-family: 'Arial Bold', 'Arial'; font-weight: 700; font-size: 32px; font-style: normal; text-align: center;  }

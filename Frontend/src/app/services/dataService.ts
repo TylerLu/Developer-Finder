@@ -74,7 +74,13 @@ export class DataService {
     }
 
     public post(actionUrl: string, data: any) {
-        return this._http.post(actionUrl, data, { headers: this.getHeaderWithoutToken() });
+        let activeProject: ReplaySubject<any> = new ReplaySubject(1);
+        this._http.post(actionUrl, data, { headers: this.getHeaderWithoutToken() })
+                         .subscribe(
+                            (data)=>activeProject.next(data.json()),
+                            (error)=>activeProject.error(error)
+                         );
+        return activeProject;
     }
 
     public getWithoutToken(actionUrl: string) {

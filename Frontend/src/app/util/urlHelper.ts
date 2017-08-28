@@ -11,11 +11,22 @@ export class UrlHelper {
         var url = window.location.href;
         if(url.indexOf("?")>0)
             return -1;
-        var urlParts = url.split("/");
+        var urlParts = window.location.pathname.split("/");
         if(urlParts.length ==0)
             return  -1;
-        var lastPart = urlParts[urlParts.length-1];
+        var lastPart = urlParts[2];
         return Number(lastPart);
+    }
+
+    public static getQueryFrom():string{
+        var url = window.location.href;
+        if(url.indexOf("?")>0)
+            return '';
+        var urlParts = window.location.pathname.split("/");
+        if(urlParts.length<4)
+            return  '';
+        var lastPart = urlParts[3];
+        return lastPart;
     }
 
     private static isElementInArray(el:string,array:string[]){
@@ -37,7 +48,7 @@ export class UrlHelper {
                     continue;
                 if(except && this.isElementInArray(property,except))
                     continue;
-                result += ('&'+property + '=' + param[property]);
+                result += ('&'+property + '=' + encodeURIComponent(param[property]));
             }
         }
         if(result[0]=='&')

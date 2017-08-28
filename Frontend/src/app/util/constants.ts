@@ -13,7 +13,9 @@ export class Constants {
 
     public static readonly avatarImgUrl = 'assets/images/profile-none.png';
 
-    public static readonly seedFriendIdBegin = 10001;
+    public static readonly fromUnreadToChat = "unread";
+
+    public static readonly seedFriendIdBegin = 10000;
     public static readonly chatRequestInterval = 1000 * 10;
 
     // Cookie names
@@ -48,5 +50,6 @@ export class Constants {
         public static readonly smsUrl= '/api/sms';
         public static readonly chatMessageUrl= '/api/messages';
         public static readonly messageSummaryUrl= '/api/messageSummaries';
+        public static readonly chatSMSUrl= '/api/sms';
     }
 }

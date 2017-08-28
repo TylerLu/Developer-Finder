@@ -7,7 +7,8 @@ echo start the backend app
 cd Backend
 python manage.py syncdb
 python manage.py seed
-python manage.py runserver --host 0.0.0.0 &
+# python manage.py runserver --host 0.0.0.0 &
+uwsgi --ini uwsgi.ini &
 cd ..
 
 echo start the frontend app

@@ -13,10 +13,10 @@ SQLITE_DATABASE_URI = '%s/db.sqlite3' % dirname(abspath(join(__file__, '..')))
 # Note: right now, environments varialbes could not be passed from Docker commands to here.
 # TODO: remove keys and secrets below 
 
-MYSQL_HOSTNAME = os.environ.get('MYSQL_HOSTNAME', 'mysql-ms.mysql.database.azure.com')
-MYSQL_USERNAME = os.environ.get('MYSQL_USERNAME', 'canviz@mysql-ms')
-MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD', 'P@ssword-17')
-MYSQL_DATABASE = os.environ.get('MYSQL_DATABASE', 'dev')
+MYSQL_HOSTNAME = os.environ.get('MYSQL_HOSTNAME')
+MYSQL_USERNAME = os.environ.get('MYSQL_USERNAME')
+MYSQL_PASSWORD = os.environ.get('MYSQL_PASSWORD')
+MYSQL_DATABASE = os.environ.get('MYSQL_DATABASE')
 
 SOCIAL_AUTH_LOGIN_URL = '/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/done/'
@@ -30,13 +30,13 @@ SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
 
 # http://python-social-auth.readthedocs.io/en/latest/backends/github.html?highlight=client
 # https://github.com/settings/developers
-SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY', '90f100e5dc0d0879684e')
-SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET', '87f5502cc200510c1f4b1f50aecb28f13061ea90')
+SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
 
 # http://python-social-auth.readthedocs.io/en/latest/backends/linkedin.html#oauth2
 # https://www.linkedin.com/developer/apps
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY', '81lupubqvqbnwk')
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET', 'b09hy0OBLEoxTcaj')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET')
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress'] #r_fullprofile
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = [
     'industry',
@@ -68,9 +68,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.debug.debug'
 )
 
-TWILLO_ACCOUNT_SID = os.environ.get('TWILLO_ACCOUNT_SID', 'AC00f83e3ac6df8d8ecb4d340247dc67dc')
-TWILLO_AUTH_TOKEN = os.environ.get('TWILLO_AUTH_TOKEN', '335c032874afb4c2f0db2c387a29bb2e')
-TWILLO_FROM = os.environ.get('TWILLO_FROM', '+18562822550')
-
-RUBY_CHAT_URL = os.environ.get("RUBY_CHAT_URL", "https://ruby-chat.azurewebsites.net")
-FUNCTION_APP_URL = os.environ.get("FUNCTION_APP_URL", "https://web-app-on-linux-function.azurewebsites.net")
+RUBY_CHAT_URL = os.environ.get("RUBY_CHAT_URL")
+FUNCTION_APP_URL = os.environ.get("FUNCTION_APP_URL")
+SEND_SMS_LOGIC_APP_URL = os.environ.get("SEND_SMS_LOGIC_APP_URL")

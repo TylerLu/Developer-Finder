@@ -20,8 +20,7 @@ def requestRest(api,type,data):
     return ret.json()
 
 def toMessage(msg):
-    created = datetime.strptime(msg["created_at"],"%Y-%m-%dT%H:%M:%S.%fZ")
-    m = Message(msg["id"],msg["from"],msg["to"],msg["body"],created)
+    m = Message(msg["id"],msg["from"],msg["to"],msg["body"],msg["created_at"])
     return m
 
 def toSummary(summary):
@@ -45,7 +44,7 @@ class MessagePostResource(Resource):
         fromUser = current_user.id
         toUser= request.json['to']
         resp = requestRest('/api/messages','post',{'from':fromUser,'to':toUser,'body':messageContent})
-        return resp
+        return toMessage(resp).toJson()
 
 class MessageSummaryResource(Resource):
     @login_required

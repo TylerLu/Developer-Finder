@@ -34,24 +34,24 @@ The main components of the application are described in subsequent sections in t
 
 1. Back-end - A Python App. 
 
-	* Uses the [Flask microframework](http://flask.pocoo.org/) to implement the web app and routing.
-	* Uses the [Python Social Auth](https://python-social-auth.readthedocs.io/en/latest/) library to enable GitHub/LinkedIn accounts to login and returns user profile information from these systems.
-	* Uses [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
-	* Uses [peewee](http://docs.peewee-orm.com/en/latest/) for ORM access to the MySQL Database.
+  * Uses the [Flask microframework](http://flask.pocoo.org/) to implement the web app and routing.
+  * Uses the [Python Social Auth](https://python-social-auth.readthedocs.io/en/latest/) library to enable GitHub/LinkedIn accounts to login and returns user profile information from these systems.
+  * Uses [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/).
+  * Uses [peewee](http://docs.peewee-orm.com/en/latest/) for ORM access to the MySQL Database.
 
-   	The back-end app exposes the following APIs:
+     The back-end app exposes the following APIs:
 
-   | Action | Path                    | Description |
-   | ------ | ----------------------- | ----------- |
-   | GET    | /api/me                 |             |
-   | POST   | /api/me                 |             |
-   | GET    | /api/connected-accounts |             |
-   |        |                         |             |
-   |        |                         |             |
-   |        |                         |             |
-   |        |                         |             |
-   |        |                         |             |
-   |        |                         |             |
+  | Action | Path                    | Description |
+  | ------ | ----------------------- | ----------- |
+  | GET    | /api/me                 |             |
+  | POST   | /api/me                 |             |
+  | GET    | /api/connected-accounts |             |
+  |        |                         |             |
+  |        |                         |             |
+  |        |                         |             |
+  |        |                         |             |
+  |        |                         |             |
+  |        |                         |             |
 
 
 2. Front-end - An AngularJS App.
@@ -80,11 +80,11 @@ The Ruby Chat app exposes the following APIs:
 Azure Services are also used to implement the application.  The following services are used.
 
 1. Function App
-	* Logs custom metrics to Application Insights
+  * Logs custom metrics to Application Insights
 2. Logic App
-	* Sends SMS text messages to users when they receive a message in the chat portion of the application.
+  * Sends SMS text messages to users when they receive a message in the chat portion of the application.
 3. Application Insights
-	* Store custom metrics for the application.
+  * Store custom metrics for the application.
 
 ### Databases
 
@@ -139,18 +139,18 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 3. Fill the form with the following information:
 
    * Application name: **Developer Finder**
- 
+
    * Homepage URL: **https://developer-finder-[suffix].azurewebsites.net**
 
-   		> **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-   		> 
-   		> **Example:** https://developer-finder-contoso.azurewebsites.net
+      > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+      > 	> 
+      > 	> **Example:** https://developer-finder-contoso.azurewebsites.net
 
    * Authorization callback URL: **https://developer-finder-[suffix].azurewebsites.net/complete/github/**
 
-		> **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-   		> 
-   		> **Example:** https://developer-finder-contoso.azurewebsites.net/complete/github/
+     > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+     > 	> 
+     > 	> **Example:** https://developer-finder-contoso.azurewebsites.net/complete/github/
 
 4. Click **Register application**.
 5. Copy aside the **ClientID** and **Client Secret**. 
@@ -170,15 +170,15 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
      ![](Images/developer-finder.png)
 
    * Website URL: **https://developer-finder-[suffix].azurewebsites.net**
-   		> **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-   		> 
-   		> **Example:** https://developer-finder-contoso.azurewebsites.net
+      > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+      > 	> 
+      > 	> **Example:** https://developer-finder-contoso.azurewebsites.net
 
 4. Input the other required fields, then click **Submit**.
 5. Add the OAuth 2 Authorized Redirect URL: **https://developer-finder-[suffix].azurewebsites.net/complete/linkedin-oauth2/**
-		> **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-   		> 
-   		> **Example:** https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
+   > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+   > 		> 
+   > 		> **Example:** https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
 
 6. Click **Update**.
 7. Copy aside the **ClientID** and **Client Secret**. 
@@ -192,7 +192,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
    - Open https://github.com/settings/tokens in your web browser
 
    - Sign into GitHub
-   
+
    - Fork this repository to your GitHub account
 
    - Click **Generate Token**
@@ -224,6 +224,26 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
      ![](Images/update-github-token-in-azure-resource-explorer.png)
 
    * Click **PUT**.
+
+### [Optional] Register a Twilio account to send SMS 
+
+A [trial](https://www.twilio.com/try-twilio) Twilio account could not be used here, as there are several limitations, like it can only send messages to to verfied numbers. If you have not [updated](https://www.twilio.com/console/billing/upgrade) your account, please skip this section.
+
+Follow the step below to get the requirement informations:
+
+1. Navigate to **[Dashboard](https://www.twilio.com/console/sms/dashboard)**, then click **Show API Credentials**. Copy aside the values of **ACCOUNT ID** and **AUTH TOEKN**.
+
+   ![](Images/twilio-api-credentials.png)
+
+   > Note: These 2 values will be used for the **Twilio Account SID** and **Twilio Auth Token** ARM template parameters.
+
+2. Navigate to **[Phone Number page](https://www.twilio.com/console/phone-numbers/incoming)**, copy aside a phone number (add one if there is none). Remove the spaces and hyphens, it will look like **+12223334444**.
+
+![](Images/twilio-phone-number.png)
+
+> Note: These phone number will be used for the **Twilio From Phone Number** ARM template parameter.
+
+1. Goto **Dashboard**, 
 
 ### Deploy the Azure Components
 
@@ -264,7 +284,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
      Use the name you chose at the start of these instructions that follows the **developer-finder-[suffix]** namign convention.
 
-	 > **Example:** https://developer-finder-contoso.azurewebsites.net
+   > **Example:** https://developer-finder-contoso.azurewebsites.net
 
    * Non Linux Web App Location: 
 
@@ -278,6 +298,10 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
      Use the client id and secret of the LinkedIn OAuth app.
 
+   * Twilio Acount SID & Auth Token & From Phone Number.
+
+     Use the values you got form you Twilio account.
+
    * Database Admin Login Name: 
 
      It cannot be 'azure_superuser', 'admin', 'administrator', 'root', 'guest' or 'public'.
@@ -288,7 +312,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
    * Ruby Chat Docker Image
 
-	 TODO: Need to add the path to this image.
+   TODO: Need to add the path to this image.
 
    * Source Code Repository URL:
 
@@ -345,13 +369,13 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
 1. Open the https://**developer-finder-[suffix]**.azurewebsites.net web app.
 
-	> Note: Make sure you replace the [suffix] placeholder with the value you have used throughout the deployment process.
+  > Note: Make sure you replace the [suffix] placeholder with the value you have used throughout the deployment process.
 
-	You will see the login page:
+  You will see the login page:
 
-	![](Images/web-app-login.png)
+  ![](Images/web-app-login.png)
 
-	> Note: If you get a "502 Bad Gateway" error, please wait for a few minutes and try again. 
+  > Note: If you get a "502 Bad Gateway" error, please wait for a few minutes and try again. 
 
 ## Demo scenario overview and flow
 

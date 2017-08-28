@@ -46,28 +46,28 @@
     },
     "oauthGitHubClientID": {
       "type": "string",
-      "defaultValue": "0c4dcc595b286ed3e5c0",
+      "defaultValue": "",
       "metadata": {
         "description": ""
       }
     },
     "oauthGitHubClientSecret": {
       "type": "string",
-      "defaultValue": "d13f279603ff0988241ee998807c9724c0a2a210",
+      "defaultValue": "",
       "metadata": {
         "description": ""
       }
     },
     "oauthLinkedInClientId": {
       "type": "string",
-      "defaultValue": "810gruworj798u",
+      "defaultValue": "",
       "metadata": {
         "description": ""
       }
     },
     "oauthLinkedInClientSecret": {
       "type": "string",
-      "defaultValue": "Xl0iUxxlUyHYTMzN",
+      "defaultValue": "",
       "metadata": {
         "description": ""
       }
@@ -93,9 +93,30 @@
         "description": ""
       }
     },
+    "twilioAccountSID": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "twilioAuthToken": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": ""
+      }
+    },
+    "twilioFromPhoneNumber": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": ""
+      }
+    },
     "sourceCodeRepositoryURL": {
       "type": "string",
-      "defaultValue": "https://github.com/TylerLu/developer-finder",
+      "defaultValue": "https://github.com/<YOUR REPOSITORY>/DemoApp",
       "metadata": {
         "description": "Source code repository URL"
       }
@@ -126,13 +147,26 @@
     "webAppServicePlanName": "[variables('webAppName')]",
     "chatAppServicePlanName": "[variables('chatAppName')]",
     "functionAppServicePlanName": "[variables('functionAppName')]",
+    "sendSMSLogicAppName": "send-sms",
     "mySQLServerName": "[variables('webAppName')]",
     "postgreSQLServerName": "[variables('chatAppName')]",
     "mySQLDatabaseName": "developer_finder",
     "postgreSQLDatabaseName": "chat",
-    "webAppDockerImage": "[concat(variables('containerRegistryName'), '.azurecr.io/developer-finder')]"
+    "webAppDockerImage": "[concat(variables('containerRegistryName'), '.azurecr.io/developer-finder')]",
+    "twilioConnectionName": "twilio"
   },
   "resources": [
+    {
+      "type": "microsoft.insights/components",
+      "name": "[variables('applicationInsightsName')]",
+      "apiVersion": "2014-08-01",
+      "location": "East US",
+      "kind": "other",
+      "properties": {
+          "ApplicationId": "[variables('applicationInsightsName')",    
+          "Application_Type": "other"
+      }
+    },
     {
       "type": "Microsoft.Web/serverfarms",
       "sku": {
@@ -156,6 +190,71 @@
           "targetWorkerCount": 0,
           "targetWorkerSizeId": 0
       }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "apiVersion": "2016-01-01",
+      "location": "[parameters('nonLinuxWebAppLocation')]",
+      "kind": "Storage",
+      "sku": {
+        "name": "Standard_RAGRS",
+        "tier": "Standard"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp",
+      "name": "[variables('functionAppName')]",
+      "apiVersion": "2016-03-01",
+      "location": "[parameters('nonLinuxWebAppLocation')]",
+      "properties": {
+          "name": "[variables('functionAppName')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]",
+          "clientAffinityEnabled": false,
+          "siteConfig": {
+            "AlwaysOn": true
+          }
+      },
+      "resources": [
+        {
+          "type": "config",
+          "name": "appsettings",
+          "apiVersion": "2015-08-01",
+          "properties": {
+            "FUNCTIONS_EXTENSION_VERSION": "~1",
+            "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
+            "WEBSITE_CONTENTSHARE": "[concat(variables('functionAppName'), substring(uniqueString(resourceGroup().id), 0, 4))]",
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
+            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
+            "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
+            "MS_ApplicationInsightsInstrumentationKey": "[reference(concat('microsoft.insights/components/', variables('applicationInsightsName'))).InstrumentationKey]",
+            "project": "AppServices/FunctionApp"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+            "[resourceId('microsoft.insights/components', variables('applicationInsightsName'))]"
+          ]
+        },
+        {
+          "apiVersion": "2015-08-01",
+          "name": "web",
+          "type": "sourcecontrols",
+          "properties": {
+            "RepoUrl": "[parameters('sourceCodeRepositoryURL')]",
+            "branch": "[parameters('sourceCodeBranch')]",
+            "IsManualIntegration": "parameters('sourceCodeManualIntegration')]"
+          },
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites/', variables('functionAppName'))]",
+            "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
+          ]
+        }
+      ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]"
+      ]
     },
     {
       "type": "Microsoft.Web/serverfarms",
@@ -215,28 +314,6 @@
       "location": "westcentralus",
       "properties": {
           "adminUserEnabled": true
-      }
-    },
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "apiVersion": "2016-01-01",
-      "location": "[variables('location')]",
-      "kind": "Storage",
-      "sku": {
-        "name": "Standard_RAGRS",
-        "tier": "Standard"
-      }
-    },
-    {
-      "type": "microsoft.insights/components",
-      "name": "[variables('applicationInsightsName')]",
-      "apiVersion": "2014-08-01",
-      "location": "East US",
-      "kind": "other",
-      "properties": {
-          "ApplicationId": "[variables('applicationInsightsName')",    
-          "Application_Type": "other"
       }
     },
     {
@@ -330,57 +407,108 @@
       ]
     },
     {
-      "type": "Microsoft.Web/sites",
-      "kind": "functionapp",
-      "name": "[variables('functionAppName')]",
-      "apiVersion": "2016-03-01",
-      "location": "[parameters('nonLinuxWebAppLocation')]",
+      "type": "Microsoft.Web/connections",
+      "name": "[variables('twilioConnectionName')]",
+      "location": "[variables('location')]",
+      "apiVersion": "2016-06-01",
       "properties": {
-          "name": "[variables('functionAppName')]",
-          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]",
-          "clientAffinityEnabled": false,
-          "siteConfig": {
-            "AlwaysOn": true
+        "displayName": "[variables('twilioConnectionName')]",
+        "customParameterValues": {},
+        "nonSecretParameterValues": {},
+        "api": {
+          "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/twilio')]"
+        },
+        "parameterValues":{  
+          "sid": "[parameters('twilioAccountSID')]",
+          "token": "[parameters('twilioAuthToken')]"
+       }
+      }      
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "name": "[variables('sendSMSLogicAppName')]",
+      "apiVersion": "2016-06-01",
+      "location": "[variables('location')]",
+      "scale": null,
+      "properties": {
+          "definition": {
+              "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+              "contentVersion": "1.0.0.0",
+              "parameters": {
+                  "$connections": {
+                      "defaultValue": {},
+                      "type": "Object"
+                  }
+              },
+              "triggers": {
+                  "manual": {
+                      "type": "Request",
+                      "kind": "Http",
+                      "inputs": {
+                          "schema": {
+                              "properties": {
+                                  "message": {
+                                      "type": "string"
+                                  },
+                                  "to": {
+                                      "type": "string"
+                                  }
+                              },
+                              "type": "object"
+                          }
+                      }
+                  }
+              },
+              "actions": {
+                  "Response": {
+                      "runAfter": {
+                          "Send_Text_Message_(SMS)": [
+                              "Succeeded"
+                          ]
+                      },
+                      "type": "Response",
+                      "inputs": {
+                          "body": "@body('Send_Text_Message_(SMS)')",
+                          "headers": {
+                              "Content-Type": "application/json"
+                          },
+                          "statusCode": 200
+                      }
+                  },
+                  "Send_Text_Message_(SMS)": {
+                      "runAfter": {},
+                      "type": "ApiConnection",
+                      "inputs": {
+                          "body": {
+                              "body": "@triggerBody()?['message']",
+                              "from": "[parameters('twilioFromPhoneNumber')]",
+                              "to": "@triggerBody()?['to']"
+                          },
+                          "host": {
+                              "connection": {
+                                  "name": "@parameters('$connections')['twilio']['connectionId']"
+                              }
+                          },
+                          "method": "post",
+                          "path": "/Messages.json"
+                      }
+                  }
+              },
+              "outputs": {}
+          },
+          "parameters": {
+              "$connections": {
+                  "value": {
+                      "twilio": {
+                        "id": "[concat(subscription().id,'/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/twilio')]",
+                        "connectionId": "[resourceId('Microsoft.Web/connections', variables('twilioConnectionName'))]"
+                      }
+                  }
+              }
           }
       },
-      "resources": [
-        {
-          "type": "config",
-          "name": "appsettings",
-          "apiVersion": "2015-08-01",
-          "properties": {
-            "FUNCTIONS_EXTENSION_VERSION": "~1",
-            "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
-            "WEBSITE_CONTENTSHARE": "[concat(variables('functionAppName'), substring(uniqueString(resourceGroup().id), 0, 4))]",
-            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
-            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
-            "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-05-01-preview').key1)]",
-            "MS_ApplicationInsightsInstrumentationKey": "[reference(concat('microsoft.insights/components/', variables('applicationInsightsName'))).InstrumentationKey]",
-            "project": "AppServices/FunctionApp"
-          },
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
-            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-            "[resourceId('microsoft.insights/components', variables('applicationInsightsName'))]"
-          ]
-        },
-        {
-          "apiVersion": "2015-08-01",
-          "name": "web",
-          "type": "sourcecontrols",
-          "properties": {
-            "RepoUrl": "[parameters('sourceCodeRepositoryURL')]",
-            "branch": "[parameters('sourceCodeBranch')]",
-            "IsManualIntegration": "parameters('sourceCodeManualIntegration')]"
-          },
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites/', variables('functionAppName'))]",
-            "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
-          ]
-        }
-      ],
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('functionAppServicePlanName'))]"
+          "[resourceId('Microsoft.Web/connections', variables('twilioConnectionName'))]"
       ]
     },
     {
@@ -411,8 +539,9 @@
             "MYSQL_USERNAME": "[concat(parameters('databaseAdminLoginName'), '@', variables('mySQLServerName'))]",
             "MYSQL_PASSWORD": "[parameters('databaseAdminLoginPassword')]",
             "MYSQL_DATABASE": "[variables('mySQLDatabaseName')]",
-            "RUBY_CHAT_URL": "[concat('https://', variables('webAppName'), '.azurewebsites.net/')]",
-            "FUNCTION_APP_URL": "[concat('https://', variables('functionAppName'), '.azurewebsites.net/')]"
+            "RUBY_CHAT_URL": "[concat('https://', variables('chatAppName'), '.azurewebsites.net/')]",
+            "FUNCTION_APP_URL": "[concat('https://', variables('functionAppName'), '.azurewebsites.net/')]",
+            "SEND_SMS_LOGIC_APP_URL": "[listCallbackURL(concat(resourceId('Microsoft.Logic/workflows/', variables('sendSMSLogicAppName')), '/triggers/manual'), '2016-06-01').value]"
           },
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', variables('webAppName'))]",

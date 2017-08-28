@@ -27,7 +27,7 @@ export class ProfileService {
       let activeObject: ReplaySubject<Boolean> = new ReplaySubject(1);
       this.dataService.post(Constants.WebAPI.meUrl,currentProfile)
                       .subscribe((resp)=>{
-                          activeObject.next(resp.json().success);
+                          activeObject.next(resp.id>0);
                       },
                       (error)=>{
                           activeObject.error(error);

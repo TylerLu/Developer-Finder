@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'connect',  component: ConnectSocialComponent },
   { path: 'search',  component: SearchComponent },
   { path: 'chat/:id',  component: ChatComponent },
+  { path: 'chat/:id/:source',  component: ChatComponent },
 ];
 
 @NgModule({

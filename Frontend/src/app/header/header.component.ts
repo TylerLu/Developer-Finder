@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit {
     }
 
     goChat(chatUserId){
-        this.router.navigate(['chat',chatUserId]);
+        this.router.navigate(['chat',chatUserId,Constants.fromUnreadToChat]);
     }
 
     logout(logoutArgs){

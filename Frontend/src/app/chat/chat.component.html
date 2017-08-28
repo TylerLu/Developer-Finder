@@ -28,9 +28,9 @@
         </div>
         <div class="send">
             <div class="button">
-            <a class="btn btn-default"  href="javascript:void(0)"  (click)="sendMessage()">
-                Send
-            </a>
+                <a class="btn btn-default"  href="javascript:void(0)"  (click)="sendMessage()"  [class.btnDisabled]="btnDisabled">
+                    Send
+                </a>
             </div>
         </div>
     </div>

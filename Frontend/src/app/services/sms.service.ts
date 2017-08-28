@@ -14,7 +14,7 @@ export class SMSService {
        let activeObject:ReplaySubject<Boolean> = new ReplaySubject(1);
        this.dataService.post(Constants.WebAPI.smsUrl,{msg:message})
                        .subscribe(
-                        resp=>activeObject.next(resp.json()),
+                        resp=>activeObject.next(resp),
                         error=>activeObject.error(error));
        return activeObject;
    }

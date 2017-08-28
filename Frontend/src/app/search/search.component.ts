@@ -27,6 +27,9 @@ export class SearchComponent implements OnInit {
   disableAddFriendAndChatId = Constants.seedFriendIdBegin;
   disableFriendAndChatTip = "The user with id >= 10000 could not chat or add as friend";
 
+  ifShowSuggestSpinner:Boolean=false;
+  ifShowSearchSpinner:Boolean=false;
+
   constructor(private friendService: FriendService,
               private router: Router,
               private profileService: ProfileService,
@@ -53,13 +56,18 @@ export class SearchComponent implements OnInit {
   }
 
   getSuggestedFriends():void{
+    this.ifShowSuggestSpinner = true;
     this.friendService.getSuggestedFriends()
                        .subscribe(
                           (resp)=>{
                             this.suggestedFriends = resp;
                             this.hasCompleteSuggested = true;
+                            this.ifShowSuggestSpinner = false;
                           },
-                          (error)=>console.log(error)
+                          (error)=>{
+                            console.log(error);
+                            this.ifShowSuggestSpinner = false;
+                          }
                        );
   }
 
@@ -79,10 +87,17 @@ export class SearchComponent implements OnInit {
 
   doSearch():void{
     this.hasSearched = true;
+    this.ifShowSearchSpinner = true;
     this.friendService.searchFriend(this.buildSearchParamUrl(),this.currentUserProfile)
                        .subscribe(
-                         (resp)=>this.searchedFriends = resp,
-                          (error)=>console.log(error)
+                         (resp)=>{
+                           this.searchedFriends = resp;
+                           this.ifShowSearchSpinner = false;
+                         },
+                         (error)=>{
+                           console.log(error);
+                           this.ifShowSearchSpinner = false;
+                         }
                        );
   }
 
@@ -99,7 +114,7 @@ export class SearchComponent implements OnInit {
     id && this.router.navigate(['chat',id]);
   }
 
-  addFriend(friendId:string):void{
+  addFriend(friendId:string,from):void{
     if(!friendId)
       return;
      if(parseInt(friendId) >= this.disableAddFriendAndChatId){
@@ -111,31 +126,14 @@ export class SearchComponent implements OnInit {
         .subscribe(
           (resp)=>{
               if(resp==false)
-              return;
-              this.searchedFriends.forEach(friend=>{
+                return;
+              let currentProfiles:Friend[] = (from == 'searched')?this.searchedFriends:this.suggestedFriends;
+              currentProfiles.forEach(friend=>{
                   if(friend.friendProfile.id.toString() == friendId)
                     friend.isAlreadyFriend = true;
               });
           }
         );
-  }
-
-  getMockSuggested(){
-    this.suggestedFriends = new Array<Friend>(2);
-    let friend1 = new Friend();
-    friend1.friendProfile = new Profile();
-    friend1.friendProfile.name = "Joe Smith";
-    friend1.friendProfile.location = "Senior Software Engineer, Microsoft Redmond, WA";
-    friend1.isAlreadyFriend = true;
-
-    let friend2 = new Friend();
-    friend2.friendProfile = new Profile();
-    friend2.friendProfile.name = "Joe Smith";
-    friend2.friendProfile.location = "Senior Software Engineer, Microsoft Redmond, WA";
-    friend2.isAlreadyFriend = true;
-
-    this.suggestedFriends[0] = friend1;
-    this.suggestedFriends[1] = friend2;
-  }
+   }
  
 }

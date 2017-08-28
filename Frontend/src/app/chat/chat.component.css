@@ -9,6 +9,7 @@
 .main >div.right .message textarea{border:1px solid #000;height: 500px;width:98%;}
 .main >div.right .send{height: 35px;margin-top: 15px;text-align: right;width: 100%;}
 .main >div.right .send .button .btn{border-radius: 5px;padding: 10px 50px;}
+.main >div.right .send .button .btn.btnDisabled{background-color:gray;cursor: not-allowed;text-decoration: underline;pointer-events: none;cursor: not-allowed;}
 .main ul{list-style: none;margin-bottom: 30px;}
 .main ul li.ownByme{padding-left: 60px;}
 .main ul li > div{text-align: left;}

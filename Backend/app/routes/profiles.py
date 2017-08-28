@@ -120,7 +120,7 @@ class SuggestedProfilesResource(Resource):
 
     def profile_to_dict(self, profile):
         d = model_to_dict(profile)
-        positions = profile.position_fetch if profile.position_fetch else profile.positions.execute()
+        positions = profile.position_fetch if hasattr(profile, 'position_fetch') else profile.positions.execute()
         d['positions'] = [p.title for p in positions]
         return d
 
