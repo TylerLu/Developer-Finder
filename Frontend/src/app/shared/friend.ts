@@ -6,4 +6,5 @@ export class Friend{
     friendAccount?:User;
     friendProfile?:Profile;
     isAlreadyFriend?:Boolean;
+    disableAddFriendTip?:string;
 }

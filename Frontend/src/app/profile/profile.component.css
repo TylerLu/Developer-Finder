@@ -5,6 +5,8 @@
 .profile.container .left .top>ul{list-style: none;padding: 0;margin: 0; }
 .profile.container .left .top>ul li{text-align: left; min-height: 25px;}
 .profile.container .left .top>ul li.phone{margin-top:10px;}
+.profile.container .left .top>ul li.phone label.validate{color:red;}
+.profile.container .left .top>ul li.phone label.validate.sign{padding-right: 10px;}
 .profile.container .left .top>ul li input{width:220px}
 .profile.container .left .bottom .bio{min-height:200px;text-align: justify;padding-left: 32px;padding-right: 35px;}
 .profile.container .left .bottom .button-area{padding-left: 10px;}

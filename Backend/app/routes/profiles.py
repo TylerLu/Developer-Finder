@@ -1,4 +1,5 @@
 from app import api
+from app.models.friend import Friend
 from app.models.profile import Profile
 from app.models.position import Position
 from flask import request
@@ -87,19 +88,23 @@ class SuggestedProfilesResource(Resource):
         location_part_list = safe_split_strip_remove_empty(current_user_profile.location)
         position_title_list = [p.title for p in current_user_profile.positions]
 
-        clauses = []
+        clauses = [Profile.id != current_user.id] 
+
+        or_clauses = []
         for skill in skills_list:
-            clauses.append(Profile.skills.contains(skill))
+            or_clauses.append(Profile.skills.contains(skill))
         for location_part in location_part_list:
-            clauses.append(Profile.location.contains(location_part))
+            or_clauses.append(Profile.location.contains(location_part))
         if any(position_title_list):
             subquery = Position.select(Param('1')).where(Position.profile == Profile.id, Position.title << position_title_list)
-            clauses.append(Clause(SQL('EXISTS'), subquery))
+            or_clauses.append(Clause(SQL('EXISTS'), subquery))
+        if any(or_clauses):
+            clauses.append(reduce(operator.or_, or_clauses))
+        
+        friends = Friend.select(Friend.friend).where(Friend.user == current_user.id).execute()
+        clauses.append(~(Profile.id << [f.friend.id for f in friends]))
 
-        profiles = Profile.select().order_by(fn.Rand()).limit(100)
-        if any(clauses):
-            profiles = profiles.where(Profile.id != current_user.id, reduce(operator.or_, clauses))
-       
+        profiles = Profile.select().where(reduce(operator.and_, clauses)).order_by(fn.Rand()).limit(100)
         for profile in profiles:
             profile.score = 0
             for skill in skills_list:

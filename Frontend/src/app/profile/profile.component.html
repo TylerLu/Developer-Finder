@@ -8,13 +8,16 @@
                 <li class="name"><h3>{{currentProfile.name}}</h3></li>
                 <li>{{currentProfile.company}}</li>
                 <li>{{currentProfile.location}}</li>
-                <li class="phone">Phone{{isEditMode?"":":"}} <input class="phoneNumber" [(ngModel)]="currentProfile.phone_number" type="text" [hidden]="!isEditMode" /><label [hidden]="isEditMode">{{currentProfile.phone_number}}</label></li>
+                <li class="phone">Phone<label class="validate sign" *ngIf="isEditMode">*</label><input class="phoneNumber" [(ngModel)]="currentProfile.phone_number" type="text" [hidden]="!isEditMode" (ngModelChange)="checkPhoneNumber($event)"  />
+                    <label [hidden]="isEditMode">{{currentProfile.phone_number}}</label>
+                    <div><label class="validate tip" [hidden]="isValidated" >Please enter phone number.</label></div>
+                </li>
                 <li *ngIf="!isEditMode">
                     <div class="function">
-                        <div class="chat bg-img"  (click)="doChat(currentProfile.id)">
+                        <div  title="{{disableAddFriendTip}}"  class="chat bg-img"  (click)="doChat(currentProfile.id)">
                             Chat
                         </div>
-                        <div class="bg-img" [ngClass]="isAlreadyFriend ? 'friend' : 'add-friend'">
+                        <div title="{{disableAddFriendTip}}" class="bg-img" [ngClass]="isAlreadyFriend ? 'friend' : 'add-friend'" (click)="addFriend(currentProfile.id,'searched')">
                             Friend
                         </div>
                     </div>

@@ -20,7 +20,7 @@
 
 .header .banner {padding: 0;vertical-align: top;}
 .header .banner >div{vertical-align: top;display: inline-block;}
-.header .banner .content{font-size: 25px;margin-left: 40px;padding-top: 50px;width:55%;text-align: left;}
+.header .banner .content{font-size: 25px;margin-left: 40px;padding-top: 50px;width:55%;text-align: center;}
 .header .banner .bg{background-image:url(/assets/images/banner-bg-cover.png);background-size:326px 113px;background-repeat: no-repeat;width:326px;height:113px;    margin-left: 30px;}
 .header .banner .button{padding-top: 50px;padding-left: 30px;}
 .header .banner .button a{background-color:#00A651;border-radius:5px;width:135px; height:43px;padding:13px 26px;}

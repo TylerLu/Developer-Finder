@@ -15,6 +15,8 @@ export class Constants {
 
     public static readonly fromUnreadToChat = "unread";
 
+    public static readonly disableAddFriendAndChatTip = "This profile id which is bigger than 10000 could not be chatted with or added as friend.";
+
     public static readonly seedFriendIdBegin = 10000;
     public static readonly chatRequestInterval = 1000 * 10;
 

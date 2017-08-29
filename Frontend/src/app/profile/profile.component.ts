@@ -2,6 +2,7 @@ import {Component, OnInit,Inject } from '@angular/core';
 import { Router} from '@angular/router';
 
 import {Profile} from '../shared/profile';
+import {Friend} from '../shared/friend';
 import {ConnectedAccount} from '../shared/connectedAccount';
 import { ProfileService } from '../services/profile.service';
 import { FriendService } from '../services/friend.service';
@@ -21,8 +22,11 @@ export class ProfileComponent implements OnInit {
   isEditMode:Boolean = false;
   profileId?:number;
   hasAccountNotConnected:Boolean = false;
+  isValidated:Boolean = true;
   currentProfile:Profile = new Profile();
   isAlreadyFriend:Boolean = false;
+  disableAddFriendAndChatId = Constants.seedFriendIdBegin;
+  disableAddFriendTip = '';
   constructor(private profileService: ProfileService,
               private connectService:ConnectService,
               private friendService: FriendService,
@@ -73,14 +77,20 @@ export class ProfileComponent implements OnInit {
   tryParsePosition():void{
        this.currentProfile.position = this.profileService.getProfilePosition(this.currentProfile);
   }
-
+  
 
   doChat(id:string):void{
-    id && this.router.navigate(['chat'],id);
+    if(parseInt(id) >= this.disableAddFriendAndChatId){
+      this.disableAddFriendTip = Constants.disableAddFriendAndChatTip;
+      return;
+    }
+    id && this.router.navigate(['chat',id]);
   }
 
   saveProfile():void{
-    console.log(this.currentProfile.phone_number);
+    this.checkPhoneNumber(this.currentProfile.phone_number);
+    if(!this.isValidated)
+      return;
     this.profileService.updateCurrentUserProfile(this.currentProfile)
                        .subscribe(
                          resp=>{location.reload();},
@@ -88,9 +98,34 @@ export class ProfileComponent implements OnInit {
                        );
   }
 
+  checkPhoneNumber(newValue) {
+    if(newValue)
+      this.isValidated = true;
+    else
+      this.isValidated = false;
+  }
+
   goTo(url:string):void{
     this.router.navigate([url]);
   }
+
+  addFriend(friendId:string):void{
+    if(!friendId)
+      return;
+     if(parseInt(friendId) >= this.disableAddFriendAndChatId){
+       this.disableAddFriendTip = Constants.disableAddFriendAndChatTip;
+       return;
+    }
+    this.friendService
+        .addFriend(friendId)
+        .subscribe(
+          (resp)=>{
+              if(resp==false)
+                return;
+              this.isAlreadyFriend = true;
+          }
+        );
+   }
 
   private checkIsEditMode():void{
     this.profileId = UrlHelper.getQueryId();

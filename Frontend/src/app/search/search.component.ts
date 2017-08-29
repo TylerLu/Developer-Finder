@@ -26,6 +26,8 @@ export class SearchComponent implements OnInit {
   disableSearch:Boolean=true;
   disableAddFriendAndChatId = Constants.seedFriendIdBegin;
   disableFriendAndChatTip = "The user with id >= 10000 could not chat or add as friend";
+  
+  fromKey = "searched";
 
   ifShowSuggestSpinner:Boolean=false;
   ifShowSearchSpinner:Boolean=false;
@@ -106,20 +108,29 @@ export class SearchComponent implements OnInit {
       this.router.navigate(['profile',id]);
   }
 
-  doChat(id:string):void{
+  handleDisableAddFriendAndChat(id:string,from:string){
+     let friends = (from == this.fromKey)?this.searchedFriends:this.suggestedFriends;
+     friends.forEach(friend=>{
+       if(friend.friendProfile.id.toString() == id){
+         friend.disableAddFriendTip = Constants.disableAddFriendAndChatTip;
+       }
+     });
+  }
+
+  doChat(id:string,from:string):void{
     if(parseInt(id) >= this.disableAddFriendAndChatId){
-      console.log(this.disableFriendAndChatTip);
+      this.handleDisableAddFriendAndChat(id,from);
       return;
     }
     id && this.router.navigate(['chat',id]);
   }
 
-  addFriend(friendId:string,from):void{
+  addFriend(friendId:string,from:string):void{
     if(!friendId)
-      return;
+       return;
      if(parseInt(friendId) >= this.disableAddFriendAndChatId){
-      console.log(this.disableFriendAndChatTip);
-      return;
+       this.handleDisableAddFriendAndChat(friendId,from);
+       return;
     }
     this.friendService
         .addFriend(friendId)
@@ -127,7 +138,7 @@ export class SearchComponent implements OnInit {
           (resp)=>{
               if(resp==false)
                 return;
-              let currentProfiles:Friend[] = (from == 'searched')?this.searchedFriends:this.suggestedFriends;
+              let currentProfiles:Friend[] = (from == this.fromKey)?this.searchedFriends:this.suggestedFriends;
               currentProfiles.forEach(friend=>{
                   if(friend.friendProfile.id.toString() == friendId)
                     friend.isAlreadyFriend = true;

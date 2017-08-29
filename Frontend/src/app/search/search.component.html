@@ -71,10 +71,10 @@
                         </ul>
                     </div>
                     <div class="function">
-                        <div class="chat bg-img"  (click)="doChat(friend.friendProfile.id)">
+                        <div  title="{{friend.disableAddFriendTip}}" class="chat bg-img"  (click)="doChat(friend.friendProfile.id)">
                             Chat
                         </div>
-                        <div class="bg-img" [ngClass]="friend.isAlreadyFriend ? 'friend' : 'add-friend'" (click)="addFriend(friend.friendProfile.id,'suggested')">
+                        <div  title="{{friend.disableAddFriendTip}}" class="bg-img" [ngClass]="friend.isAlreadyFriend ? 'friend' : 'add-friend'" (click)="addFriend(friend.friendProfile.id,'suggested')">
                             Friend
                         </div>
                     </div>
@@ -114,10 +114,10 @@
                         </ul>
                     </div>
                     <div class="function">
-                        <div class="chat bg-img"  (click)="doChat(friend.friendProfile.id)">
+                        <div  title="{{friend.disableAddFriendTip}}" class="chat bg-img"  (click)="doChat(friend.friendProfile.id,'searched')">
                             Chat
                         </div>
-                        <div class="bg-img" [ngClass]="friend.isAlreadyFriend ? 'friend' : 'add-friend'" (click)="addFriend(friend.friendProfile.id,'searched')">
+                        <div title="{{friend.disableAddFriendTip}}" class="bg-img" [ngClass]="friend.isAlreadyFriend ? 'friend' : 'add-friend'" (click)="addFriend(friend.friendProfile.id,'searched')">
                             Friend
                         </div>
                     </div>

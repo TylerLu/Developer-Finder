@@ -61,8 +61,12 @@ export class ConnectSocialComponent implements OnInit {
                                     else
                                       this.router.navigate(['profile']);
                               }else{
-                                  if(Cookie.get(Constants.SocialProvider.SkipSocialKey))
-                                     this.router.navigate(['search']);
+                                  if(Cookie.get(Constants.SocialProvider.SkipSocialKey)){
+                                    if(this.profile!=null && this.profile.phone_number && this.profile.skills)
+                                      this.router.navigate(['search']);
+                                    else
+                                      this.router.navigate(['profile']);
+                                  }
                               }
                             });
                         });

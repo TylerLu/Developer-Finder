@@ -13,7 +13,7 @@ import {MessageNotification} from "../shared/messageNotification";
 
 export class HeaderComponent implements OnInit {
     title:string = "Developer Finder";
-    banner:string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque pellentesque.";
+    banner:string = "We are going global!";
 
     titleTop:string = this.title;
     titleBottom:string = "The marketplace for your next application team";
