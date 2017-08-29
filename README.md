@@ -6,7 +6,7 @@ This sample includes a web application that allows users to authenticate and reg
 
 In addition to the profile and search capabilities, the web application interacts with a custom chat system that allows users to engage in chat conversation on the web site.
 
-The entire application is packaged inside Docker containers and deployed to Microsoft Azure.  In addition to the container apps, Azure resources such as a MySQL database, Application Insights, and other Azure services are used to implement the application.
+The entire application is packaged inside Docker containers and deployed to Microsoft Azure. In addition to the container apps, Azure resources such as a MySQL database, Application Insights, and other Azure services are used to implement the application.
 
 **Table of contents**
 
@@ -18,10 +18,10 @@ The entire application is packaged inside Docker containers and deployed to Micr
 * [Deployment](#deployment)
   * [Choose a name for the app](#choose-a-name-for-the-app)
   * [Register OAuth applications](#register-oauth-applications)
-  * [GitHub Authorization](#gitHub-authorization)
+  * [GitHub Authorization](#github-authorization)
   * [[Optional] Register a Twilio account to send SMS](#optional-register-a-twilio-account-to-send-sms)
-  * [Deploy the Azure Components](deploy-the-azure-components)
-  * [Set up the CI/CD](#set-up-the-ci-cd)
+  * [Deploy the Azure Components](#deploy-the-azure-components)
+  * [Set up the CI/CD](#set-up-the-cicd)
   * [Validate deployment](#validate-deployment)
 * [Demo scenario overview and flow](#demo-scenario-overview-and-flow)
 * [Running the demo](#running-the-demo)
@@ -38,11 +38,11 @@ The main components of the application are described in subsequent sections in t
 
 #### Back-end 
 
-The back-end is a Python App. 
+The back-end is a Python (3.6) App. 
 
 * Uses the [Flask microframework](http://flask.pocoo.org/) to implement the web app and routing.
 
-* Uses the [Python Social Auth](https://python-social-auth.readthedocs.io/en/latest/) library to enable GitHub/LinkedIn accounts to login and returns user profile information from these systems. 
+* Uses the [Python Social Auth](https://python-social-auth.readthedocs.io/en/latest/) library to enable GitHub and LinkedIn accounts to login and returns user profile information from these systems. 
 
    The following path are exposed for authentication:
 
@@ -56,39 +56,39 @@ The back-end is a Python App.
 
 * Uses [peewee](http://docs.peewee-orm.com/en/latest/) for ORM access to the MySQL Database.
 
-The back-end app exposes the following APIs:
+* Exposes the following APIs:
 
-| Action | Path                    | Description                              |
-| ------ | ----------------------- | ---------------------------------------- |
-| GET    | /api/me                 | Get current user's profile               |
-| POST   | /api/me                 | Update current user's profile            |
-| GET    | /api/connected-accounts | Get connected accounts                   |
-| GET    | /api/friends            | Get current user's friend                |
-| POST   | /api/friends            | Add a friend for current user            |
-| GET    | /api/profiles           | Get user profiles                        |
-| GET    | /api/profiles/*<id>*    | Get a profile by id                      |
-| GET    | /api/profiles/suggested | Get suggested profiles (friend) for current user |
-| POST   | /api/sms                | Send a SMS                               |
-| GET    | /api/messages           | Get new messages sent to current user    |
-| POST   | /api/messages           | Send a message from current user         |
-| GET    | /api/messages/summary   | Get messages summary (unread count)      |
+   | Action | Path                    | Description                              |
+   | ------ | ----------------------- | ---------------------------------------- |
+   | GET    | /api/me                 | Get current user's profile               |
+   | POST   | /api/me                 | Update current user's profile            |
+   | GET    | /api/connected-accounts | Get current user's connected accounts    |
+   | GET    | /api/friends            | Get current user's friend                |
+   | POST   | /api/friends            | Add a friend for current user            |
+   | GET    | /api/profiles           | Get user profiles                        |
+   | GET    | /api/profiles/*<id>*    | Get a profile by id                      |
+   | GET    | /api/profiles/suggested | Get suggested profiles (friends) for current user |
+   | POST   | /api/sms                | Send a SMS                               |
+   | GET    | /api/messages           | Get new messages sent to current user    |
+   | POST   | /api/messages           | Send a message from current user         |
+   | GET    | /api/messages/summary   | Get messages summary (unread count)      |
 
 #### Font-end
 
-The front-end is an AuglarJS page which provides the following pages:
+The front-end is an AuglarJS App which provides the following pages:
 
 | Page       | Path            | Description                              |
 | ---------- | --------------- | ---------------------------------------- |
 | Login      | /login          | Allow users to login with GitHub or LinkedIn account |
 | Connect    | /connect        | Allow current user to connect to the other account |
 | My Profile | /profile        | Allow current user to view and edit his/her profile |
-| Search     | /search         | Allow current user to search friends, add friend, and chat |
-| Profile    | /profile/*<id>* | Allow current user to view other devs'   |
+| Search     | /search         | Allow current user to search friends, add friend, and start a chat |
+| Profile    | /profile/*<id>* | Allow current user to view other devs' profile |
 | Chat       | /chat/*<id>*    | Allow current user to chat with a dev or a friend |
 
 #### Nginx 
 
-The Nginx combines the back-end app and front-end app, and expose them through the same port - 80.
+The Nginx combines the back-end app and front-end app, and exposes them through the same port - 80.
 
 It also works with [uwsgi](https://uwsgi-docs.readthedocs.io/en/latest/) to serve the back-end Python app.
 
@@ -110,12 +110,12 @@ The Ruby Chat app exposes the following APIs:
 
 ### Azure Services
 
-Azure Services are also used to implement the application.  The following services are used.
+Azure Services are also used to implement the application. The following services are used.
 
 1. Function App
-  * Logs custom metrics to Application Insights
+  * Logs custom metrics to Application Insights.
 2. Logic App
-  * Sends SMS text messages to users when they receive a message in the chat portion of the application.
+  * Sends SMS text messages to users.
 3. Application Insights
   * Store custom metrics for the application.
 
@@ -127,41 +127,41 @@ The MySQL Database is used by the Web App. It contains the following tables.
 
 | Table          | Description                              |
 | -------------- | ---------------------------------------- |
-| user           | Stores users info, like username and email |
+| user           | Stores user info, like username and email |
 | usersocialauth | Stores users' connected social account info, like provider and uid<br>It contains a foreign key column user_id referencing the primary key column of the user table |
 | profile        | Stores users' profiles                   |
-| position       | Stores users' positions<br>It Contains a foreign key column profile_id referencing the primary key column of profile table. |
+| position       | Stores users' positions<br>It contains a foreign key column profile_id referencing the primary key column of the profile table. |
 | friend         | Stores friends relationship <br>Its 2 column user_id and friend_id are foreign keys referencing the primary key column of the user table |
 
 The **profile** table contains several columns which could be divided into 5 groups:
 
 * Primary key:
-  * id: matches the id column value in the user table 
+  * id: matches the id column value in the user table.
 * Values managed by My Profile page:
-  * phone_number: user’s phone number
-  * skills: comma seperated string, for example: *c#, Python, Ruby*
+  * phone_number: user’s phone number.
+  * skills: comma seperated string, for example: *c#, Python, Ruby*.
 
 
 * Values are retrieved from GitHub and LinkedIn account:
-  * company: user’s current company
-  * location: user's location
-  * name: user display name
+  * company: user’s current company.
+  * location: user's location.
+  * name: user display name.
 * Values are retrieved from GitHub only:
-  * github_profile_url: the URL to user’s GitHub profile page
-  * blog_url: the URL to user's blog
-  * hireable: boolean indicating if the user is hireable
-  * bio: user's biography
-  * public_repos: the number of public repos
-  * public_gists: the number of public gists
-  * followers: the number of followers
-  * following: the number of users the user is following
-  * avatar_url: the URL to the user’s avatar
+  * github_profile_url: the URL to user’s GitHub profile page.
+  * blog_url: the URL to user's blog.
+  * hireable: boolean indicating if the user is hireable.
+  * bio: user's biography.
+  * public_repos: the number of public repos.
+  * public_gists: the number of public gists.
+  * followers: the number of followers.
+  * following: the number of users the user is following.
+  * avatar_url: the URL to the user’s avatar.
 * Values are retrieved from LinkedIn only:
-  * industry: The industry the member belongs to
+  * industry: The industry the member belongs to.
   * num_connections: the number of LinkedIn connections the member has, capped at 500.  See 'num-connections-capped' to determine if the value returned has been capped.
   * num_connections_capped: returns 'true' if the member's 'num-connections' value has been capped at 500', or 'false' if 'num-connections' represents the user's true value.
   * linkedin_standard_profile_url: the URL to the member's authenticated profile on LinkedIn.  You must be logged into LinkedIn to view this URL.
-  * linkedin_public_profile_Url: the URL to the member's public profile on LinkedIn.
+  * linkedin_public_profile_url: the URL to the member's public profile on LinkedIn.
 
 #### PostgreSQL Database
 
@@ -192,7 +192,7 @@ In this document, we use the first example to show you how to deploy the solutio
 
 ### Register OAuth applications
 
-To start, you must register OAuth applications for GitHub and LinkedIn.  These OAuth applications allow the application to authenticate to GitHub and LinkedIn and download user profile information stored in these systems.
+To start, you must register OAuth applications for GitHub and LinkedIn. These OAuth applications allow the application to authenticate to GitHub and LinkedIn and download user profile information stored in these systems.
 
 #### Register GitHub OAuth application
 
@@ -223,7 +223,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 4. Click **Register application**.
 5. Copy aside the **ClientID** and **Client Secret**. 
 
-   > Note: These values will be used for the **SOCIAL_AUTH_GITHUB_KEY** and **SOCIAL_AUTH_GITHUB_SECRET** ARM template parameters.
+   > Note: These values will be used for the **OAuth GitHub Client Id** and **OAuth GitHub client Secret** ARM template parameters.
 
 #### Register LinkedIn OAuth application
 
@@ -249,7 +249,11 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
       > ```
 
 4. Input the other required fields, then click **Submit**.
-5. Add the OAuth 2 Authorized Redirect URL: **https://developer-finder-[suffix].azurewebsites.net/complete/linkedin-oauth2/**
+
+5. Add the OAuth 2 Authorized Redirect URL: 
+
+   **https://developer-finder-[suffix].azurewebsites.net/complete/linkedin-oauth2/**
+
    > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
    >
    > **Example:**
@@ -260,7 +264,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
 7. Copy aside the **ClientID** and **Client Secret**. 
 
-   > Note: These values will be used for the **SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY** and **SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET** ARM template parameters.
+   > Note: These values will be used for the **OAuth LinkedIn Client Id** and **OAuth LinkedIn Client Secret** ARM template parameters.
 
 ### GitHub Authorization
 
@@ -304,7 +308,9 @@ To start, you must register OAuth applications for GitHub and LinkedIn.  These O
 
 ### [Optional] Register a Twilio account to send SMS 
 
-In this section, we are going to create a trail Twilio account, and verify some phone numbers due to restrictions of trial account. You may skip this section.
+When a chat started, the app will send SMS to notify the other side. In order to acheive this, we will create a trail Twillo. 
+
+But we need to verify other others' phone numbers in advance due to the restrictions of trial account. You can skip this section.
 
 #### Create a trial Twilio account and configure
 
@@ -346,7 +352,7 @@ In this section, we are going to create a trail Twilio account, and verify some 
 
    ![](Images/twilio-verified-caller-ids.png)
 
-2. Click **⊕**:
+2. Click the red **⊕**:
 
    ![](Images/twilio-verify-a-phone-number.png)
 
@@ -442,7 +448,7 @@ In this section, we are going to create a trail Twilio account, and verify some 
 
 3. Click **Choose container registry**, the pre-configured private registry will be loaded.
 
-   [](Images/configure-cd-01.png)
+   ![](Images/configure-cd-01.png)
 
 4. Click **Save** (the right one).
 
@@ -489,9 +495,9 @@ You will see the login page:
 
 ## Demo scenario overview and flow
 
-See the [Demo Script](/Demo Script.pptx) slide deck.
+See the [Demo Script](Demo Script.pptx) slide deck.
 
 ## Running the demo
 
-Follow the steps in [Demo Script](/Demo Script.pptx) slide deck.
+Follow the steps in [Demo Script](Demo Script.pptx) slide deck.
 
