@@ -482,7 +482,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    ![](Images/configure-cd-01.png)
 
-4. Click **Save** (the right one)
+4. Click **OK** (the right one)
 
 5. Click **Configure continuous delivery**
 
@@ -493,7 +493,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
    * Branch: choose **master**
    * Dockerfile path: change it to **Dockerfile**
 
-6. Click **Save** (the right one)
+6. Click **OK** (the right one)
 
 7. Click **Select a Team Service account**
 
@@ -501,9 +501,9 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    * Create a new account or using an existing one
    * Create a new project or using an existing one.
-8. Click **Save** (the right one)
+8. Click **OK** (the right one)
 
-9. Click **Save**
+9. Click **OK**.
 
    > **Note:** It takes a few minutes to finish:
    >
