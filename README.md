@@ -11,6 +11,7 @@ The entire application is packaged inside Docker containers and deployed to Micr
 **Table of contents**
 
 * [Architecture](#architecture)
+  * [Containers](#Containers)
   * [Web App](#web-app)
   * [Chat App](#chat-app)
   * [Azure Services](#azure-services)
@@ -34,7 +35,7 @@ The following diagram illustrates the overall system architecture.
 
 The main components of the application are described in subsequent sections in this document.
 
-## Containers
+### Containers
 
 2 Docker images implement the system, each runs in its own container and they communicate via HTTP/HTTPS.
 
@@ -198,7 +199,7 @@ This image shows custom events logged to Application Insights.
 ![](Images/application-insights-1.jpg)
 
 The following image shows the detail of a custom event.  In this example, the /api/messages/summary Python REST API was successfully invoked.
- 
+
 ![](Images/application-insights-2.jpg)
 
 ## Deployment
@@ -527,29 +528,29 @@ You will see the login page:
 
 ## Demo scenario overview and flow
 
-See the [Demo Script](Demo Script.pptx) slide deck.
+See the [Demo Script](Demo%20Script.pptx) slide deck.
 
 ## Running the demo
 
-Follow the steps in [Demo Script](Demo Script.pptx) slide deck.
+Follow the steps in [Demo Script](Demo%20Script.pptx) slide deck.
 
 ## Contributors ##
-| Roles                                    			| Author(s)                                			|
-| -------------------------------------------------	| ------------------------------------------------- |
-| Project Lead / Architect                          | Todd Baginski (Microsoft MVP, Canviz) @tbag		|
-| Architect / Developer Lead				        | Tyler Lu (Canviz) @TylerLu  						|
-| Developer				                			| Albert Xie (Canviz)   							|
-| Developer				                			| Hubert Sui (Canviz)   							|
-| Design											| Justin So (Canviz)								|
-| Testing                                  			| Cindy Yan (Canviz)     							|
-| Sponsor / Support                        			| Ahmed Elnaby (Microsoft)   						|
-| Sponsor / Support                        			| Stella Lin (Microsoft)   							|
+| Roles                      | Author(s)                                |
+| -------------------------- | ---------------------------------------- |
+| Project Lead / Architect   | Todd Baginski (Microsoft MVP, Canviz) @tbag |
+| Architect / Developer Lead | Tyler Lu (Canviz) @TylerLu               |
+| Developer                  | Albert Xie (Canviz)                      |
+| Developer                  | Hubert Sui (Canviz)                      |
+| Design                     | Justin So (Canviz)                       |
+| Testing                    | Cindy Yan (Canviz)                       |
+| Sponsor / Support          | Ahmed Elnaby (Microsoft)                 |
+| Sponsor / Support          | Stella Lin (Microsoft)                   |
 
 ## Version history ##
 
-| Version | Date          		| Comments        |
-| ------- | ------------------- | --------------- |
-| 1.0     | August 31, 2017 	| Initial release |
+| Version | Date            | Comments        |
+| ------- | --------------- | --------------- |
+| 1.0     | August 31, 2017 | Initial release |
 
 ## Disclaimer ##
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
