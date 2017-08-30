@@ -16,6 +16,7 @@ The entire application is packaged inside Docker containers and deployed to Micr
   * [Chat App](#chat-app)
   * [Azure Services](#azure-services)
   * [Databases](#databases)
+  * [Application Insights](#application-insights)
 * [Deployment](#deployment)
   * [Choose a name for the app](#choose-a-name-for-the-app)
   * [Register OAuth applications](#register-oauth-applications)
@@ -125,8 +126,6 @@ Azure Services are also used to implement the application. The following service
   * Logs custom metrics to Application Insights.
 2. Logic App
   * Sends SMS text messages to users.
-3. Application Insights
-  * Store custom metrics for the application.
 
 ### Databases
 
@@ -181,18 +180,17 @@ The PostgreSQL database is used by the Chat App. It is very simple and only cont
 | messages             | Stores all the messages             |
 | message_read_records | Records users' last read message id |
 
-## Application Insights
+### Application Insights
 
 Throughout the application, custom events are logged to Application Insights.
 
 The following table describes the custom events logged to Application Insights at a high level.
 
-| Source            | Triggers                         				 	|
-| ----------------- | -------------------------------------------------	|
-| Python Web App    | Python REST API, Function, and Logic App Calls 	|
-| Python REST API 	| Python REST API, Function, and Logic App Calls 	| 
-| Azure Function	| Start, Events Taking Place In Function, Complete	|
-| Logic App		  	| Start, Events Taking Place In Logic App, Complete	|
+| Source          | Triggers                                 |
+| --------------- | ---------------------------------------- |
+| Python Web App  | Python REST API, Function, and Logic App Calls |
+| Python REST API | Python REST API, Function, and Logic App Calls |
+| Logic App       | Start, Events Taking Place In Logic App, Complete |
 
 This image shows custom events logged to Application Insights.
 
@@ -313,7 +311,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
    - Select the following checkboxes (your selections should match the screenshot below):
 
-     - repo (all) -> repo:status, repo_deployment, public_repo
+     - repo -> repo:status, repo_deployment, public_repo
 
      - admin:repo_hook -> read:repo_hook
 

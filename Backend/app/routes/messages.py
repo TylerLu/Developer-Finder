@@ -31,9 +31,11 @@ def toSummary(summary):
 
 class MessagesResource(Resource):
     
+    APIUrl = "/api/messages/<int:id>"
+    
     @login_required
     def get(self,id):
-        LoggerService().logPythonAPI('/api/messages/{0}'.format(id))
+        LoggerService().logPythonAPIGet(MessagesResource.APIUrl)
         uid=current_user.id
         unreadMsgs = requestRest('/api/messages/unread','get',{"to":uid,"from":id})
         unreadMsgs = map(lambda m:toMessage(m),unreadMsgs)
@@ -41,9 +43,11 @@ class MessagesResource(Resource):
 
 class MessagePostResource(Resource):
     
+    APIUrl =  '/api/messages'
+
     @login_required
     def post(self):
-        LoggerService().logPythonAPI('/api/messages')
+        LoggerService().logPythonAPIPost(MessagePostResource.APIUrl)
         messageContent = request.json['content']
         fromUser = current_user.id
         toUser= request.json['to']
@@ -51,13 +55,16 @@ class MessagePostResource(Resource):
         return toMessage(resp).toJson()
 
 class MessageSummaryResource(Resource):
+
+    APIUrl = '/api/messages/summary'
+
     @login_required
     def get(self):
-        LoggerService().logPythonAPI('/api/messages/summary')
+        LoggerService().logPythonAPI(MessageSummaryResource.APIUrl)
         notifications = requestRest('/api/messages/summary','get',{'to':current_user.id})
         messageSummarys = map(lambda n:toSummary(n),notifications)
         return list(map(lambda m:m.toJson() , messageSummarys))
 
-api.add_resource(MessagePostResource, '/api/messages')
-api.add_resource(MessagesResource, '/api/messages/<int:id>')
-api.add_resource(MessageSummaryResource, '/api/messages/summary')
+api.add_resource(MessagePostResource, MessagePostResource.APIUrl)
+api.add_resource(MessagesResource, MessagesResource.APIUrl)
+api.add_resource(MessageSummaryResource, MessageSummaryResource.APIUrl)
