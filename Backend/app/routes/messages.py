@@ -4,6 +4,7 @@ import time,json,requests
 from app.models.message import Message
 from app.models.messageSummary import MessageSummary
 from app.models.profile import Profile
+from app.services.loggerService import LoggerService
 from flask import request
 from flask_login import login_required, current_user
 from flask_restful import Resource
@@ -12,6 +13,7 @@ def buildRubyApi(api):
     return "{0}/{1}".format(settings.RUBY_CHAT_URL,api)
 
 def requestRest(api,type,data):
+    LoggerService().logRubyAPI(api)
     requestUrl = buildRubyApi(api)
     if type == 'get':
         ret = requests.get(requestUrl,params=data)
@@ -31,6 +33,7 @@ class MessagesResource(Resource):
     
     @login_required
     def get(self,id):
+        LoggerService().logPythonAPI('/api/messages/{0}'.format(id))
         uid=current_user.id
         unreadMsgs = requestRest('/api/messages/unread','get',{"to":uid,"from":id})
         unreadMsgs = map(lambda m:toMessage(m),unreadMsgs)
@@ -40,6 +43,7 @@ class MessagePostResource(Resource):
     
     @login_required
     def post(self):
+        LoggerService().logPythonAPI('/api/messages')
         messageContent = request.json['content']
         fromUser = current_user.id
         toUser= request.json['to']
@@ -49,10 +53,11 @@ class MessagePostResource(Resource):
 class MessageSummaryResource(Resource):
     @login_required
     def get(self):
+        LoggerService().logPythonAPI('/api/messages/summary')
         notifications = requestRest('/api/messages/summary','get',{'to':current_user.id})
         messageSummarys = map(lambda n:toSummary(n),notifications)
         return list(map(lambda m:m.toJson() , messageSummarys))
 
 api.add_resource(MessagePostResource, '/api/messages')
 api.add_resource(MessagesResource, '/api/messages/<int:id>')
-api.add_resource(MessageSummaryResource, '/api/messageSummaries')
+api.add_resource(MessageSummaryResource, '/api/messages/summary')

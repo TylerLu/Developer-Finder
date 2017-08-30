@@ -36,7 +36,7 @@ The main components of the application are described in subsequent sections in t
 
 ## Containers
 
-2 Docker images implement the system, each runs in it's own container and they communicate via HTTP/HTTPS.
+2 Docker images implement the system, each runs in its own container and they communicate via HTTP/HTTPS.
 
 The following diagram illustrates the containers.
 
@@ -141,7 +141,7 @@ The MySQL Database is used by the Web App. It contains the following tables.
 | position       | Stores users' positions<br>It contains a foreign key column profile_id referencing the primary key column of the profile table. |
 | friend         | Stores friends relationship <br>Its 2 columns, user_id and friend_id, are foreign keys referencing the primary key column of the user table |
 
->**Note:** In a true production environment, the data in the usersocialauth table would most likely be stored in a separate database to make the solution more secure.  In this sample it is stored in the same database to simplify the solution and the deployment process.
+>**Note:** In a true production environment, the data in the usersocialauth table would most likely be stored in a separate database to make the solution more secure.  In this sample, it is stored in the same database to simplify the solution and the deployment process.
 
 The **profile** table contains several columns which are divided into 5 groups:
 
@@ -338,7 +338,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
 ### [OPTIONAL STEP] Register a Twilio account to send SMS 
 
-When a chat is started between two users in the application, the app will send a SMS to notify the user the message was sent to them. 
+When a chat is started between two users in the application, the app will send an SMS to notify the user the message was sent to them. 
 
 This app uses a Twilio trial account to send SMS.
 
@@ -475,7 +475,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    ![](Images/web-app.png)
 
-2. Click **Continous Delivery**, then click **Configure**
+2. Click **Continuous Delivery**, then click **Configure**
 
    ![](Images/web-app-cd.png)
 
