@@ -30,7 +30,7 @@
                 "inputs": {
                     "body": {
                         "body": "@triggerBody()?['message']",
-                        "from": "+18562822550",
+                        "from": "+185*******",
                         "to": "@triggerBody()?['to']"
                     },
                     "host": {

@@ -2,7 +2,7 @@ from app import api
 from app.models.friend import Friend
 from app.models.profile import Profile
 from app.models.position import Position
-from app.services.loggerService import LoggerService
+from app.services.logger_service import logger
 from flask import request
 from flask_login import login_required, current_user
 from flask_restful import Resource, reqparse
@@ -20,11 +20,11 @@ def safe_split_strip_remove_empty(value, separator=','):
 
 class ProfilesResource(Resource):
     
-    APIUrl = '/api/profiles'
+    api_url = '/api/profiles'
 
     @login_required
     def get(self):
-        LoggerService().logPythonAPIGet(ProfilesResource.APIUrl)
+        logger.log_python_api_get(ProfilesResource.api_url)
         skills = request.args.get('skills')
         role = request.args.get('role')        
         location = request.args.get('location')
@@ -74,11 +74,11 @@ class ProfilesResource(Resource):
 
 class ProfileResource(Resource):
     
-    APIUrl = '/api/profiles/<int:id>'
+    api_url = '/api/profiles/<int:id>'
 
     @login_required
     def get(self, id):
-        LoggerService().logPythonAPIGet(ProfileResource.APIUrl)
+        logger.log_python_api_get(ProfileResource.api_url)
         profile = Profile.get(id=id) 
         d = model_to_dict(profile)
         d['positions'] = [p.title for p in profile.positions]
@@ -87,11 +87,11 @@ class ProfileResource(Resource):
 
 class SuggestedProfilesResource(Resource):
 
-    APIUrl = '/api/profiles/suggested'
+    api_url = '/api/profiles/suggested'
 
     @login_required
     def get(self):
-        LoggerService().logPythonAPIGet(SuggestedProfilesResource.APIUrl)
+        logger.log_python_api_get(SuggestedProfilesResource.api_url)
         current_user_profile = Profile.get(id=current_user.id)
         skills_list = safe_split_strip_remove_empty(current_user_profile.skills)
         location_part_list = safe_split_strip_remove_empty(current_user_profile.location)
@@ -139,6 +139,6 @@ class SuggestedProfilesResource(Resource):
         return d
 
 
-api.add_resource(ProfilesResource, ProfilesResource.APIUrl)
-api.add_resource(ProfileResource, ProfileResource.APIUrl)
-api.add_resource(SuggestedProfilesResource, SuggestedProfilesResource.APIUrl)
+api.add_resource(ProfilesResource, ProfilesResource.api_url)
+api.add_resource(ProfileResource, ProfileResource.api_url)
+api.add_resource(SuggestedProfilesResource, SuggestedProfilesResource.api_url)
