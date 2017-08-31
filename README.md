@@ -208,7 +208,9 @@ The name of the application is 'Developer Finder'. We suggest you follow the nam
 
 ​	**developer-finder-[suffix]**
 
-The suffix is used to avoid Azure resource naming conflicts. It is strongly recommended you only use lowercase letters (a-z), numbers (0-9), and hyphens (-). 
+The suffix is used to avoid Azure resource naming conflicts. 
+
+**Please do only use lowercase letters (a-z), numbers (0-9), and hyphens (-)**.
 
 Below are some examples:
 
