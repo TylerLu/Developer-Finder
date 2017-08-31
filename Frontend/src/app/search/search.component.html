@@ -51,7 +51,7 @@
             <div class="person" *ngFor="let friend of suggestedFriends">
                 <div class="profile" (click)="viewProfile(friend.friendProfile.id)" [ngStyle]="{'background-image': 'url(' + friend.friendProfile.avatar_url + ')'}"></div>
                 <div class="info">
-                    <div class="name">
+                    <div class="name"  (click)="viewProfile(friend.friendProfile.id)">
                         {{friend.friendProfile?.name}}
                     </div>
                     <div class="position">
@@ -94,7 +94,7 @@
             <div class="person"  *ngFor="let friend of searchedFriends">
                 <div class="profile" (click)="viewProfile(friend.friendProfile.id)" [ngStyle]="{'background-image': 'url(' + friend.friendProfile.avatar_url + ')'}"></div>
                 <div class="info">
-                    <div class="name">
+                    <div class="name" (click)="viewProfile(friend.friendProfile.id)"  >
                         {{friend.friendProfile?.name}}
                     </div>
                     <div class="position">

@@ -1,7 +1,7 @@
 <div *ngIf='!isLoginPage' class='header non-login'>
   <h1 class='title'>
-    <div class="search-icon"></div>
-    <div class="content">{{title}}</div>
+    <div class="search-icon" (click)="goHome()"></div>
+    <div class="content"  (click)="goHome()">{{title}}</div>
     <div class="notification-logout">
         <div class="notification" [ngClass]="notifications.length>0 ? 'count' : ''" (click)="showOrHideNotification($event)">
             <div class="num"  [hidden]="notifications.length==0">{{notificationsSummaryCount}}</div>
