@@ -442,10 +442,6 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
      Use the client id and secret of the LinkedIn OAuth app.
 
-   * Twilio Account SID & Auth Token & From Phone Number.
-
-     Use the values you got from you Twilio account.
-
    * Database Admin Login Name: 
 
      It cannot be 'azure_superuser', 'admin', 'administrator', 'root', 'guest' or 'public'.
@@ -454,9 +450,14 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
      This field should be between 8 and 128 characters long. Your password must contain characters from three of the following categories – English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, etc.).
 
-   * Ruby Chat Docker Image
+   * Ruby Chat Docker Image:
 
-   **TODO: Need to add the path to this image.**
+     Please keep the default value: *appsvc/demoapp-rubychat*.
+
+
+   * Twilio Account SID & Auth Token & From Phone Number.
+
+     Use the values you got from you Twilio account.
 
    * Source Code Repository URL:
 

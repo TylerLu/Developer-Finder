@@ -81,13 +81,13 @@
                 </div>
             </div>
             <div class="tip"  [hidden]="hasCompleteSuggested == false || (suggestedFriends.length > 0)">
-                None suggested friend could be found.
+                No suggested friends were found.
             </div>
             <hr/>
         </div>
         <h3>Search Results</h3>
         <div class="tip"  [hidden]="hasSearched">
-            Please enter your search criteria to perform a search.
+            Please enter your search criteria and click Search.
         </div>
         <div class="searched" [hidden]="!hasSearched">
             <div class="spinner"  [hidden]="!ifShowSearchSpinner"></div>
