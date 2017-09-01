@@ -152,7 +152,7 @@ The **profile** table contains several columns which are divided into 5 groups:
 * Values managed by My Profile page:
   * phone_number: user’s phone number
   * skills: comma separated string, for example: *c#, Python, Ruby*
-* Values  retrieved from GitHub and LinkedIn accounts:
+* Values retrieved from GitHub and LinkedIn accounts:
   * company: user’s current company
   * location: user's location
   * name: user display name
@@ -241,7 +241,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
 #### Register GitHub OAuth application
 
-1. Sign into GitHub
+1. Sign into GitHub.
 2. Open https://github.com/settings/applications/new
 3. Fill the form with the following information:
 
@@ -265,14 +265,14 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
      >
      > 	https://developer-finder-contoso.azurewebsites.net/complete/github/
 
-4. Click **Register application**
-5. Copy aside the **ClientID** and **Client Secret**
+4. Click **Register application**.
+5. Copy aside the **ClientID** and **Client Secret**.
 
    > **Note:** These values will be used for the **OAuth GitHub Client Id** and **OAuth GitHub client Secret** ARM template parameters.
 
 #### Register LinkedIn OAuth application
 
-1. Sign into LinkedIn
+1. Sign into LinkedIn.
 
 2. Open https://www.linkedin.com/developer/apps/new
 
@@ -293,7 +293,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
       > https://developer-finder-contoso.azurewebsites.net
       > ```
 
-4. Input the other required fields, then click **Submit**
+4. Input the other required fields, then click **Submit**.
 
 5. Add the OAuth 2 Authorized Redirect URL: 
 
@@ -305,25 +305,25 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
    >
    > 	https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
 
-6. Click **Update**
+6. Click **Update**.
 
-7. Copy aside the **ClientID** and **Client Secret**
+7. Copy aside the **ClientID** and **Client Secret**.
 
    > **Note:** These values will be used for the **OAuth LinkedIn Client Id** and **OAuth LinkedIn Client Secret** ARM template parameters.
 
 ### GitHub Authorization
 
-1. Generate Token
+1. Generate Token:
 
-   - Open https://github.com/settings/tokens in your web browser
+   - Open https://github.com/settings/tokens in your web browser.
 
-   - Sign into GitHub
+   - Sign into GitHub.
 
-   - Fork this repository to your GitHub account
+   - Fork this repository to your GitHub account.
 
-   - Click **Generate Token**
+   - Click **Generate Token**.
 
-   - Enter a value in the **Token description** text box
+   - Enter a value in the **Token description** text box.
 
    - Select the following checkboxes (your selections should match the screenshot below):
 
@@ -333,7 +333,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
        ![](Images/github-new-personal-access-token.png)
 
-2. Add the GitHub Token to Azure in the Azure Resource Explorer
+2. Add the GitHub Token to Azure in the Azure Resource Explorer:
 
    * Open https://resources.azure.com/providers/Microsoft.Web/sourcecontrols/GitHub in your web browser
 
@@ -371,21 +371,21 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    After the human verification is complete, you will be redirected to a page to let you create a project.
 
-   * Input a name, for example: **Developer Finder**, then click **Create Project**
+   * Input a name, for example: **Developer Finder**, then click **Create Project**.
 
-   * After the project is created, copy aside the **ACCOUNT ID** and **AUTH TOKEN** values ![](Images/twilio-api-credentials.png)
+   * After the project is created, copy aside the **ACCOUNT ID** and **AUTH TOKEN** values.![](Images/twilio-api-credentials.png)
 
      > **Note:** These 2 values will be used for the **Twilio Account SID** and **Twilio Auth Token** ARM template parameters.
 
-3. Get a phone number
+3. Get a phone number:
 
-   * In the **Phone Numbers** section, click **Manage Numbers** 
+   * In the **Phone Numbers** section, click **Manage Numbers**.
    * Twilio will redirect you to the **Phone Numbers Dashboard**.
-   * Click **Get Started**
-   * Click **Get you first Twilio phone number**
+   * Click **Get Started**.
+   * Click **Get you first Twilio phone number**.
 
      > **Note:** Twilio will pre-select a phone number.  Use the number it gives you.
-   * Click **Choose this number**
+   * Click **Choose this number**:
 
      ![](Images/twilio-phone-number.png)
 
@@ -395,7 +395,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
 #### Verify a phone number
 
-1. Click **Verified Caller IDs** on the **Phone Numbers page**
+1. Click **Verified Caller IDs** on the **Phone Numbers page**:
 
    ![](Images/twilio-verified-caller-ids.png)
 
@@ -517,34 +517,34 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    ![](Images/web-app.png)
 
-2. Click **Continuous Delivery**, then click **Configure**
+2. Click **Continuous Delivery**, then click **Configure**:
 
    ![](Images/web-app-cd.png)
 
-3. Click **Choose container registry**, the pre-configured private registry will be loaded
+3. Click **Choose container registry**, the pre-configured private registry will be loaded:
 
    ![](Images/configure-cd-01.png)
 
-4. Click **OK** (the right one)
+4. Click **OK** (the right one).
 
-5. Click **Configure continuous delivery**
+5. Click **Configure continuous delivery**:
 
    ![](Images/configure-cd-02.png)
 
-   * Code repository: choose **GitHub**
+   * Code repository: choose **GitHub**.
    * Repository: choose this GitHub repository that you forked.
-   * Branch: choose **master**
-   * Dockerfile path: change it to **Dockerfile**
+   * Branch: choose **master**.
+   * Dockerfile path: change it to **Dockerfile**.
 
-6. Click **OK** (the right one)
+6. Click **OK** (the right one).
 
-7. Click **Select a Team Service account**
+7. Click **Select a Team Service account**:
 
    ![](Images/configure-cd-03.png)
 
-   * Create a new account or using an existing one
+   * Create a new account or using an existing one.
    * Create a new project or using an existing one.
-8. Click **OK** (the right one)
+8. Click **OK** (the right one).
 
 9. Click **OK**.
 
