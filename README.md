@@ -17,12 +17,14 @@ The entire application is packaged inside Docker containers and deployed to Micr
   * [Azure Services](#azure-services)
   * [Databases](#databases)
   * [Application Insights](#application-insights)
+  * [Geo-Replication](#geo-replication)
 * [Deployment](#deployment)
   * [Choose a name for the app](#choose-a-name-for-the-app)
   * [Register OAuth applications](#register-oauth-applications)
   * [GitHub Authorization](#github-authorization)
   * [[Optional] Register a Twilio account to send SMS](#optional-register-a-twilio-account-to-send-sms)
   * [Deploy the Azure Components](#deploy-the-azure-components)
+  * [Configure TrackCustomEvent function URL](#configure-trackcustomevent-function-url)
   * [Set up the CI/CD](#set-up-the-cicd)
   * [Validate deployment](#validate-deployment)
 * [Demo scenario overview and flow](#demo-scenario-overview-and-flow)
@@ -205,7 +207,7 @@ The following image shows the detail of a custom event.  In this example, the /a
 Because this is a sample application that is designed for anyone in the world to deploy their own isolated instance, the databases in the application are created each time the ARM template deploys the solution.  The web apps are tied directly to the databases that are deployed.
 
 Since this is the case, if you Geo-Replicate the solution, each Geo-Location will have a separate copy of the databases.  You are still able to demonstrate Geo-Replicating the app as part of the demo, but if you Geo-Replicate the solution then subsequently logged into an instance of the app in the US with one user, and logged into an instance of the App in China with another user, they would not be able to see each other in search results or chat because they are interacting with separate databases.
- 
+
 In a real production scenario, there would be a common database, or multiple databases with a database sync.  This would provide the ability to use the Traffic Manager to load balance traffic across multiple Geo-Locations and achieve global scale with the solution.  You can re-architect the solution to provide these capabilities.
 
 ## Deployment
@@ -442,8 +444,6 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
      Use the name you chose at the start of these instructions that follows the **developer-finder-[suffix]** naming convention.
 
-      > **Example:** https://developer-finder-contoso.azurewebsites.net
-
    * No-Linux Web App Location: 
 
      You **MUST choose a different region for the non-Linux web apps**, because they cannot be created in the same region and the same resource group.
@@ -482,6 +482,34 @@ If you wish to enable the SMS capabilities in the application you must create a 
 5. Click **Purchase**.
 
 6. Wait until the ARM template deployment process completes.
+
+### Configure TrackCustomEvent function URL
+
+1. Get TrackCustomEvent function URL from the Function App.
+
+   - Open the Function App in the Resource Group:
+
+     ![](Images/function-app.png)
+
+   - Expand the functions, then click **TrackCustomEvent**. Click **Get function URL** at the right.
+
+     ![](Images/function-app-url.png)
+
+   - Copy the URL on the popup.
+
+2. Configure application settings of the Web App.
+
+   - Open the Web App in the Resource Group:
+
+     ![](Images/web-app.png)
+
+   - Click **Application settings**
+
+     ![](Images/web-app-settings.png)
+
+   - Find the *TRACK_CUSTOM_EVENT_FUNCTION_URL* setting, paste the function URL you just copied to its value inputbox.
+
+   - Click **Save**.
 
 ### Set up CI/CD
 
@@ -531,7 +559,10 @@ Open the http**s**://**developer-finder-[suffix]**.azurewebsites.net web app.
 > **Note:** 
 >
 > 1. Make sure you use http**s** instead of http.
+>
 > 2. Make sure you replace the [suffix] placeholder with the value you have used throughout the deployment process.
+>
+> **Example:** https://developer-finder-contoso.azurewebsites.net
 
 You will see the login page:
 
