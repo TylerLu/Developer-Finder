@@ -325,11 +325,13 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
    - Enter a value in the **Token description** text box.
 
-   - Select the following checkboxes (your selections should match the screenshot below):
+   - Select the following scopes (your selections should match the screenshot below):
 
      - repo -> repo:status, repo_deployment, public_repo
 
-     - admin:repo_hook -> read:repo_hook
+     - user -> read:user, user:emial, user:follow
+
+       > Note: the user scope itself must be selected.
 
        ![](Images/github-new-personal-access-token.png)
 
@@ -411,7 +413,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
 2. Click the **Deploy to Azure** button below:
 
-   [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FTylerLu%2FDeveloper-Finder%2Fmaster%2Fazuredeploy.json)
+   [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-App-Service%2FDemoApp%2Fmaster%2Fazuredeploy.json)
 
 3. Fill in the values in the deployment page:
 

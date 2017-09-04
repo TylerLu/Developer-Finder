@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo start the ssh server
-/usr/sbin/sshd
+service ssh start
 
 echo start the backend app
 cd Backend
