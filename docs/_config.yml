@@ -11,7 +11,7 @@ defaults:
       path: ""
     values:
       layout: "default"
-      author: Tyler Lu
+      author: Todd Baginski
       author_github: TylerLu
 keep_files: ['app_data/jobs/triggered','app_data/jobs/continuous']
 baseurl: /Developer-Finder
