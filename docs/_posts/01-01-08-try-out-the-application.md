@@ -1,8 +1,7 @@
 ---
-title: Authenticate the Office 365 API Connector
+title: Try Out the Application
 description:
 category: SETUP
-optional: true
 ---
 
 {% include header.md %}
