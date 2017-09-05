@@ -3,7 +3,7 @@ title: Register a Twilio account to send SMS
 description: 
 category: SETUP
 author: Todd Baginski
-author_github: syntaxc4
+author_github: tbag
 optional: true
 ---
 
