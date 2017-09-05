@@ -8,7 +8,8 @@ TODO: add a couple of verbiage to indicate there are additional steps and link t
 
    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-App-Service%2FDemoApp%2Fmaster%2Fazuredeploy.json)
 
-## What does it do
+## What does it do?
+
 This sample includes a web application that allows users to authenticate and register with their GitHub and LinkedIn accounts, import data into their user profiles from those systems, and supplement their profile with additional information. The web application also provides users the ability to search for developers based on the information in their profile, and even suggests friends based on common profile information.
 
 In addition to the profile and search capabilities, the web application interacts with a custom chat system that allows users to engage in chat conversation on the web site.
@@ -23,4 +24,4 @@ See [Developer Finder Documentation](https://tylerlu.github.io/Developer-Finder)
 
 ## Disclaimer
 
-See [License](License.md)
+See [License](License)
