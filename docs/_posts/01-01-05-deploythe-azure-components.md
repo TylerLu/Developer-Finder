@@ -22,22 +22,7 @@ category: SETUP
 
    * Location: 
 
-     Web Apps on Linux are currently (2017/08) only available in the following regions. So, you must choose one of the regions below:
-
-     *TODO: link to the actual doc which has the list*
-
-     * West US
-     * East US
-     * West Europe
-     * North Europe
-     * South Central US
-     * North Central US
-     * Southeast Asia
-     * East Asia
-     * Australia East
-     * Japan East
-     * Brazil South
-     * South India
+     Web Apps for Containers are currently (as of September 2017) not available in all regions. So, you must choose one of the regions listed in [this article](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-linux-intro).
 
   ![]({{site.baseurl}}/img/azure-deploy-settings.png)
 
@@ -45,9 +30,9 @@ category: SETUP
 
      Use the name you chose at the start of these instructions that follows the **developer-finder-[suffix]** naming convention.
 
-   * No-Linux Web App Location: 
+   * Web App Location: 
 
-     You **MUST choose a different region for the non-Linux web apps**, because they cannot be created in the same region and the same resource group.
+     You **MUST choose a different region for the web application**, because they cannot be created in the same region and the same resource group.
 
    * OAuth Git Hub Client Id & Secret: 
 
@@ -68,7 +53,6 @@ category: SETUP
    * Ruby Chat Docker Image:
 
      Please keep the default value: *appsvc/demoapp-rubychat*.
-
 
    * Twilio Account SID & Auth Token & From Phone Number.
 
