@@ -1,7 +1,7 @@
 ---
 title: How to run the Web App Locally
 description: 
-category: DEMO
+category: RUN
 ---
 
 {% include header.md %}

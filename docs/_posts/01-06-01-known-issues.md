@@ -2,7 +2,7 @@
 title: Known Issues
 description:
 author: Cory Fowler
-category: RESOURCES
+category: ARCHITECTURE
 ---
 
 {% include header.md %}

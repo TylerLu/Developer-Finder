@@ -1,7 +1,7 @@
 ---
 title: Application Insights Integration
 description:
-category: DEMO
+category: RUN
 ---
 
 {% include header.md %}

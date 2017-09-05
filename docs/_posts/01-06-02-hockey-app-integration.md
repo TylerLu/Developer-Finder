@@ -2,7 +2,7 @@
 title: Hockey App Integration
 description:
 author: Cory Fowler
-category: RESOURCES
+category: ARCHITECTURE
 ---
 
 {% include header.md %}

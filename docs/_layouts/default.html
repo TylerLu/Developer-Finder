@@ -60,17 +60,17 @@
                             </div>
                         </div>
                     </div>
-                    {% if site.categories.DEMO %}
+                    {% if site.categories.RUN %}
                     <div class="card">
-                        <div class="card-header" role="tab" id="DemoHeading">
+                        <div class="card-header" role="tab" id="RunHeading">
                             <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#Demo" aria-expanded="{% if page.category == "DEMO" %}true{% else %}false{% endif %}" aria-controls="Demo">Demo Script</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#Run" aria-expanded="{% if page.category == "RUN" %}true{% else %}false{% endif %}" aria-controls="Run">Give it a run</a>
                             </h5>
                         </div>
-                        <div id="Demo" class="collapse{% if page.category == "DEMO" %} in{% endif %}" role="tabpanel" aria-labelledby="DemoHeading">
+                        <div id="Run" class="collapse{% if page.category == "RUN" %} in{% endif %}" role="tabpanel" aria-labelledby="RunHeading">
                             <div class="card-block">
                                 <ul class="nav nav-pills nav-stacked">
-                                    {% for doc in site.categories.DEMO %}
+                                    {% for doc in site.categories.RUN %}
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{doc.url | prepend: site.baseurl}}">{{doc.title}}</a>
@@ -123,17 +123,17 @@
                             </div>
                         </div>
                     </div>
-                    {% if site.categories.RESOURCES %}
+                    {% if site.categories.ARCHITECTURE %}
                     <div class="card">
-                        <div class="card-header" role="tab" id="ResourcesHeading">
+                        <div class="card-header" role="tab" id="ArchitectureHeading">
                             <h5 class="mb-0">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#Resources" aria-expanded="{% if page.category == "RESOURCES" %}true{% else %}false{% endif %}" aria-controls="Resources">Resources</a>
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#Architecture" aria-expanded="{% if page.category == "ARCHITECTURE" %}true{% else %}false{% endif %}" aria-controls="Architecture">Architecture deep dive</a>
                             </h5>
                         </div>
-                        <div id="Resources" class="collapse{% if page.category == "RESOURCES" %} in{% endif %}" role="tabpanel" aria-labelledby="ResourcesHeading">
+                        <div id="Architecture" class="collapse{% if page.category == "ARCHITECTURE" %} in{% endif %}" role="tabpanel" aria-labelledby="ArchitectureHeading">
                             <div class="card-block">
                                 <ul class="nav nav-pills nav-stacked">
-                                    {% for doc in site.categories.RESOURCES %}
+                                    {% for doc in site.categories.ARCHITECTURE %}
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{doc.url | prepend: site.baseurl}}">{{doc.title}}</a>

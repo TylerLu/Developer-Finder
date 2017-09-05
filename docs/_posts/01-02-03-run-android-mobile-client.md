@@ -1,7 +1,7 @@
 ---
 title: Run android mobile client
 description:
-category: DEMO
+category: RUN
 ---
 
 {% include header.md %}
