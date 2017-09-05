@@ -1,6 +1,6 @@
-sample: Contoso Insurance
-githubOrg: azure-samples
-githubRepo: ContosoInsurance
+sample: Developer Finder
+githubOrg: TylerLu
+githubRepo: Developer-Finder
 markdown: kramdown
 highlighter: rouge
 gems:
@@ -11,7 +11,7 @@ defaults:
       path: ""
     values:
       layout: "default"
-      author: Cory Fowler
-      author_github: syntaxc4
+      author: Tyler Lu
+      author_github: TylerLu
 keep_files: ['app_data/jobs/triggered','app_data/jobs/continuous']
-baseurl: /ContosoInsurance
+baseurl: /Developer-Finder
