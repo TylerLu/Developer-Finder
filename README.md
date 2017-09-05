@@ -4,7 +4,7 @@
 
 The Developer Finder application is a container based application using Web App for Containers from Azure App Service. It demonstrates how to make a web application with multiple technologies and containers. 
 
-TODO: add a couple of verbiage to indicate there are additional steps and link them to the actual tutorials
+*TODO: add a couple of verbiage to indicate there are additional steps and link them to the actual tutorials*
 
    [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-App-Service%2FDemoApp%2Fmaster%2Fazuredeploy.json)
 
@@ -24,4 +24,4 @@ See [Developer Finder Documentation](https://tylerlu.github.io/Developer-Finder)
 
 ## Disclaimer
 
-See [License](License)
+See [License](LICENSE)
