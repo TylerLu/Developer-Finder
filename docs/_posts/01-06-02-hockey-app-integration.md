@@ -1,7 +1,7 @@
 ---
 title: Hockey App Integration
 description:
-author: Cory Fowler
+author: Todd Baginski
 category: ARCHITECTURE
 ---
 

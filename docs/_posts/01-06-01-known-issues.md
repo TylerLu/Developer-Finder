@@ -1,7 +1,7 @@
 ---
 title: Known Issues
 description:
-author: Cory Fowler
+author: Todd Baginski
 category: ARCHITECTURE
 ---
 

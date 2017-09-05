@@ -2,7 +2,7 @@
 title: Configure your Development Environment
 description: 
 category: SETUP
-author: Cory Fowler
+author: Todd Baginski
 author_github: syntaxc4
 optional: true
 ---
