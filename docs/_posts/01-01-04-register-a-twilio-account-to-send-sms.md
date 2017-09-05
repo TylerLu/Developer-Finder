@@ -29,7 +29,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
    * Input a name, for example: **Developer Finder**, then click **Create Project**.
 
-   * After the project is created, copy aside the **ACCOUNT ID** and **AUTH TOKEN** values.![](Images/twilio-api-credentials.png)
+   * After the project is created, copy aside the **ACCOUNT ID** and **AUTH TOKEN** values.![]({{site.baseurl}}/img/twilio-api-credentials.png)
 
      > **Note:** These 2 values will be used for the **Twilio Account SID** and **Twilio Auth Token** ARM template parameters.
 
@@ -43,7 +43,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
      > **Note:** Twilio will pre-select a phone number.  Use the number it gives you.
    * Click **Choose this number**:
 
-     ![](Images/twilio-phone-number.png)
+     ![]({{site.baseurl}}/img/twilio-phone-number.png)
 
    * Copy aside the phone number.
 
@@ -53,10 +53,10 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
 1. Click **Verified Caller IDs** on the **Phone Numbers page**:
 
-   ![](Images/twilio-verified-caller-ids.png)
+   ![]({{site.baseurl}}/img/twilio-verified-caller-ids.png)
 
 2. Click the red **⊕**:
 
-   ![](Images/twilio-verify-a-phone-number.png)
+   ![]({{site.baseurl}}/img/twilio-verify-a-phone-number.png)
 
 3. Follow the instructions to verify the phone number.

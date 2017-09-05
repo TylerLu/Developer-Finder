@@ -11,7 +11,7 @@ category: ARCHITECTURE
 
 The following diagram illustrates the containers.
 
-![](Images/containers.jpg)
+![]({{site.baseurl}}/img/containers.jpg)
 
 
 *TODO: base image*

@@ -54,7 +54,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
    * Application Logo: download and use the image below
 
-     ![](Images/developer-finder.png)
+     ![]({{site.baseurl}}/img/developer-finder.png)
 
    * Website URL: **https://developer-finder-[suffix].azurewebsites.net**
       > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.

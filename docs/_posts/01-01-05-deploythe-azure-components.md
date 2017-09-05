@@ -14,7 +14,7 @@ category: SETUP
 
 3. Fill in the values in the deployment page:
 
-  ![](Images/azure-deploy-basic.png)
+  ![]({{site.baseurl}}/img/azure-deploy-basic.png)
 
    * Resource group: 
 
@@ -39,7 +39,7 @@ category: SETUP
      * Brazil South
      * South India
 
-  ![](Images/azure-deploy-settings.png)
+  ![]({{site.baseurl}}/img/azure-deploy-settings.png)
 
    * Web App Name: 
 

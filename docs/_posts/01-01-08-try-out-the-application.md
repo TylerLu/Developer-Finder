@@ -19,7 +19,7 @@ Open the http**s**://**developer-finder-[suffix]**.azurewebsites.net web app.
 
 You will see the login page:
 
-![](Images/web-app-login.png)
+![]({{site.baseurl}}/img/web-app-login.png)
 
 > **Note:** If you get a "502 Bad Gateway" error, please wait for a few minutes and try again. 
 {: .blockquote .alert-info}

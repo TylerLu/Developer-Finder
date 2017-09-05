@@ -27,7 +27,7 @@ category: SETUP
        > Note: the user scope itself must be selected.
        {: .blockquote .alert-warning }
 
-       ![](Images/github-new-personal-access-token.png)
+       ![]({{site.baseurl}}/img/github-new-personal-access-token.png)
 
 2. Add the GitHub Token to Azure in the Azure Resource Explorer:
 
@@ -43,6 +43,6 @@ category: SETUP
 
    * Paste the token into the **token parameter**
 
-     ![](Images/update-github-token-in-azure-resource-explorer.png)
+     ![]({{site.baseurl}}/img/update-github-token-in-azure-resource-explorer.png)
 
    * Click **PUT**

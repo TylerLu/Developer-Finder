@@ -34,7 +34,7 @@ The entire application is packaged inside Docker containers and deployed to Micr
 
 The following diagram illustrates the overall system architecture.
 
-![](Images/architecture.jpg)
+![]({{site.baseurl}}/img/architecture.jpg)
 
 The main components of the application are described in subsequent sections in this document.
 

@@ -16,7 +16,7 @@ In addition to the profile and search capabilities, the web application interact
 
 The entire application is packaged inside Docker containers and deployed to Microsoft Azure. In addition to the container-based apps, Azure resources such as a MySQL database, Application Insights, and other Azure services are used to implement the application. 
 
-![](Images/architecture.jpg)
+![]({{site.baseurl}}/img/architecture.jpg)
 
 ## Documentation
 
