@@ -1,0 +1,48 @@
+- name: Cory Fowler
+  company: Microsoft
+  github: SyntaxC4
+  twitter: cfowlerMSFT
+  gravatarEmailHash: bfb79985340321e0ff40f9e460ca699f
+  role: Sponsor, Support
+- name: Donna Malayeri
+  company: Microsoft
+  github: lindydonna
+  twitter: lindydonna
+  gravatarEmailHash: efa9545ee9c12f86c53f4b83a0d09bce
+  role: Sponsor, Support
+- name: Yochay Kiriaty
+  company: Microsoft
+  github: yochay
+  twitter: yochayk
+  gravatarEmailHash: 92309f3d7492749d7ce29c64de5f8656
+  role: Sponsor, Support
+- name: Todd Baginski
+  company: Canviz Consulting
+  github: tbag
+  gravatarEmailHash: 7b912926d54298ef520ee689c3d20e73
+  role: Project Lead, Architect, Documentation
+- name: Cloris Sun
+  company: Canviz Consulting
+  role: Mobile Apps
+- name: Albert Xie
+  company: Canviz Consulting
+  role: Web Apps
+- name: Tyler Lu
+  company: Canviz Consulting
+  role: Azure Components, Services, Deployment
+  github: TylerLu
+- name: Ring Li
+  company: Canviz Consulting
+  role: Testing
+- name: Melody She
+  company: Canviz Consulting
+  role: Testing
+- name: Justin So
+  company: Canviz Consulting
+  role: UX Design
+- name: Johnny Chu
+  company: Canviz Consulting
+  role: PM
+- name: Arthur Zheng
+  company: Canviz Consulting
+  role: PM

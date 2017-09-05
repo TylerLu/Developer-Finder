@@ -1,0 +1,123 @@
+--- 
+title: Welcome to Contoso Insurance 
+description: Contoso Insurance is a Sample Web and Mobile Application build on Microsoft Azure. 
+author: Cory Fowler 
+author_github: syntaxc4 
+--- 
+
+{% capture welcome_content %}{% include welcome.md %}{% endcapture %}
+
+<section>
+    {{ welcome_content | markdownify }}
+
+    <table class="table">
+        <thead>
+            <th>Azure Services</th>
+            <th>Other technologies</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <dl>
+                        <dt>App Service</dt>
+                        <dd>Authentication/Authorization</dd>
+                        <dd>Continuous integration and deployment</dd>
+                        <dd>Mobile App server SDK
+                            <dd>Mobile offline sync client SDK</dd>
+                            <dd>Mobile file sync SDK</dd>
+                            <dt>Logic Apps</dt>
+                            <dd>Invoking Azure Functions via web hooks</dd>
+                            <dd>Sending Email</dd>
+                            <dt>Azure Functions</dt>
+                            <dd>Web hook triggers
+                                <dd>Queue triggers</dd>
+                                <dt>Azure Cognitive Services</dt>
+                                <dd>Computer Vision API</dd>
+                                <dt>ARM Templates</dt>
+                                <dt>Notification Hubs</dt>
+                                <dd>Push Notifications to mobile devices</dd>
+                                <dt>Azure SQL Database</dt>
+                                <dt>Azure Storage</dt>
+                                <dd>Blobs</dd>
+                                <dd>Queues</dd>
+                    </dl>
+                </td>
+                <td>
+                    <dl>
+                        <dt>ASP.NET MVC Web Site <small>with KnockoutJS</small></dt>
+                        <dt>ASP.NET MVC Web API</dt>
+                        <dt>Xamarin Forms Mobile Application</dt>
+                        <dd>iOS</dd>
+                        <dd>Android</dd>
+                        <dt>Azure Application Insights</dt>
+                        <dt>HockeyApp</dt>
+                        <dt>Entity Framework</dt>
+                        <dt>Extension methods</dt>
+                        <dt>Custom Attributes</dt>
+                    </dl>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="documents">
+    <h2>Downloads</h2>
+    <br>
+    <div class="card-group">
+        {% for item in site.data.downloads %}
+        <div class="card">
+            <div class="card-block">
+                <h4 class="card-title">{{item.name}}</h4>
+                <p class="card-text"><small class="text-muted">{{ item.description }}</small></p>
+                <a href="{{item.path}}" class="btn btn-success">Download</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="contributors">
+    <h2>Contributors</h2>
+    <br>
+    <div class="card-columns">
+        {% for member in site.data.members %}
+        <div class="card">
+            <img class="card-img-top" src="https://gravatar.com/avatar/{{ member.gravatarEmailHash }}?d=mm" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">{{ member.name }}</h4>
+                <p class="card-text"><small class="text-muted">{{member.role}}</small><br><small>{{ member.company }}</small></p>
+                {% if member.github %}<a href="https://github.com/{{ member.github }}"><i class=""></i>Github</a>{% endif
+                %} {% if member.twitter %}<a href="https://twitter.com/{{ member.twitter }}"><i class=""></i>Twitter</a>{%
+                endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="history">
+    <h2>History</h2>
+    <br>
+    <table class="table table-hover">
+        <thead class="thead-inverse">
+            <th>Version</th>
+            <th>Release Date</th>
+            <th>Comments</th>
+        </thead>
+        <tbody>
+            {% for history in site.data.versions %}
+            <tr>
+                <td>{{history.version}}</td>
+                <td>{{history.date}}</td>
+                <td>{{history.comments}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<section id="license">
+    <h2>License</h2>
+    <br> See <a href="https://github.com/{{site.githubOrg}}/{{site.githubRepo}}/blob/master/LICENSE.txt" target="_blank">LICENSE</a>
+</section>

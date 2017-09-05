@@ -1,0 +1,30 @@
+section {
+    padding-bottom: 40px;
+}
+
+nav.navbar {
+    margin-bottom: 30px;
+}
+
+.container {
+    margin: 15px;
+}
+
+img {
+    max-width: 600px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.blockquote {
+    font-size: 1rem;
+}
+
+.clean {
+    background: #fff;
+    padding-top: 15px;
+}
+
+dl > dd {
+    padding-left: 40px;
+}

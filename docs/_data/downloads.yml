@@ -1,0 +1,12 @@
+- name: Azure Components <small>(Word Document)</small>
+  description: This download provides context on the different Azure Services used to create Contoso Insurance.
+  path: /ContosoInsurance/assets/Azure%20Components.docx
+- name: Contoso Insurance Flow <small>(Visio)</small>
+  description: This download provides a flow diagram of how data flows through the application.
+  path: /ContosoInsurance/assets/Contoso%20Insurance.vsdx
+- name: Contoso Insurance Flow <small>(Image/Png)</small>
+  description: This download provides a flow diagram of how data flows through the application.
+  path: /ContosoInsurance/assets/Contoso%20Insurance.png
+- name: Demo Script <small>(Powerpoint)</small>
+  description: This download provides step-by-step instructions for walking through the application.
+  path: /ContosoInsurance/assets/Demo%20Script.pptx

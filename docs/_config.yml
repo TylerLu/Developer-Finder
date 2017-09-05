@@ -1,0 +1,17 @@
+sample: Contoso Insurance
+githubOrg: azure-samples
+githubRepo: ContosoInsurance
+markdown: kramdown
+highlighter: rouge
+gems:
+    - jekyll-gist
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+      author: Cory Fowler
+      author_github: syntaxc4
+keep_files: ['app_data/jobs/triggered','app_data/jobs/continuous']
+baseurl: /ContosoInsurance
