@@ -70,7 +70,7 @@
                         <div id="Run" class="collapse{% if page.category == "RUN" %} in{% endif %}" role="tabpanel" aria-labelledby="RunHeading">
                             <div class="card-block">
                                 <ul class="nav nav-pills nav-stacked">
-                                    {% for doc in site.categories.RUN %}
+                                    {% for doc in site.categories.RUN reversed %}
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{doc.url | prepend: site.baseurl}}">{{doc.title}}</a>
@@ -133,7 +133,7 @@
                         <div id="Architecture" class="collapse{% if page.category == "ARCHITECTURE" %} in{% endif %}" role="tabpanel" aria-labelledby="ArchitectureHeading">
                             <div class="card-block">
                                 <ul class="nav nav-pills nav-stacked">
-                                    {% for doc in site.categories.ARCHITECTURE %}
+                                    {% for doc in site.categories.ARCHITECTURE reversed %}
 
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{doc.url | prepend: site.baseurl}}">{{doc.title}}</a>
