@@ -2,7 +2,7 @@
 
 ## What is Developer Finder?
 
-The Developer Finder application is a container based application using Web App for Containers from Azure App Service. It demonstrates how to make a web application with multiple technologies and containers. 
+The Developer Finder application is a container based application that uses Azure Web Apps for Containers in Azure App Services. It demonstrates how to make a web application with multiple technologies and containers. 
 
 *There are additional steps you must perform before clicking the Deploy button.  Please refer to the [Developer Finder Documentation](https://tylerlu.github.io/Developer-Finder/setup/2001/01/01/choose-a-name.html). for more details.*
 
