@@ -98,7 +98,7 @@ category: RUN
 
    The output will be like below:
 
-   ```sh
+   ```
    CONTAINER ID        IMAGE               COMMAND             CREATED
    d8ac8bd6fbab        developer-finder    "/opt/startup.sh"   4 minutes ago
    ```
