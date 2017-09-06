@@ -1,5 +1,5 @@
 ---
-title: Wipe All Claims
+title: Wipe User Data
 description:
 category: CLEANUP
 ---

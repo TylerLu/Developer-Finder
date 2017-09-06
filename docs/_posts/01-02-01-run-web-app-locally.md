@@ -39,7 +39,7 @@ category: RUN
      * Name: Developer Finder - Local
 
      * Website URL: http://127.0.0.1:<*Web-App-Port*>
-     
+
      * Redirect URL: http://127.0.0.1:<*Web-App-Port*>/complete/linkedin-oauth2/
 
 4. Clone or download the source code to you computer.
@@ -52,13 +52,13 @@ category: RUN
 2. Build the Dockerfile with the command below:
 
    ```sh
-   Docker build -t developer-finder .
+   docker build -t developer-finder .
    ```
 
 3. Run the Docker image with the command below:
 
    ```Sh
-   Docker run \
+   docker run \
        -p <Web-App-Port>:80 \
        -p <SSH-Port>:2222 \
        -e USE_SQLITE_DATABASE=true \
@@ -105,7 +105,7 @@ category: RUN
 
 3.  Copy the value of CONTAINER ID, then run:
 
-   ```
+   ```Sh
    docker stop <CONTAINER ID>
    ```
 
