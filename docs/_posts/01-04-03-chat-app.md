@@ -18,8 +18,8 @@ The Ruby Chat app exposes the following APIs:
 | Action | Path                                     | Description         |
 | ------ | ---------------------------------------- | ------------------- |
 | POST   | /api/messages                            | Send a new message  |
-| GET    | /api/messages/summary?to=*<receiver_id>* | Get message summary |
-| GET    | /api/messages/unread?from=*<sender_id>*&to=*<receiver_id>* | Get unread messages |
+| GET    | /api/messages/summary?to=*\<receiver_id\>* | Get message summary |
+| GET    | /api/messages/unread?from=*\<sender_id\>*&to=*\<receiver_id\>* | Get unread messages |
 {: .table .table-sm .table-striped}
 
 *TODO: prebuilt docker image*
