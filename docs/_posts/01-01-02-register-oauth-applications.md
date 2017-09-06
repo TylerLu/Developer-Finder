@@ -76,9 +76,11 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
    > **Example:**
    >
    > 	https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
+   {: .blockquote .alert-info }
 
 6. Click **Update**.
 
 7. Copy aside the **ClientID** and **Client Secret**.
 
    > **Note:** These values will be used for the **OAuth LinkedIn Client Id** and **OAuth LinkedIn Client Secret** ARM template parameters.
+   {: .blockquote .alert-info }

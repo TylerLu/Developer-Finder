@@ -32,6 +32,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
    * After the project is created, copy aside the **ACCOUNT ID** and **AUTH TOKEN** values.![]({{site.baseurl}}/img/twilio-api-credentials.png)
 
      > **Note:** These 2 values will be used for the **Twilio Account SID** and **Twilio Auth Token** ARM template parameters.
+     {: .blockquote .alert-info }
 
 3. Get a phone number:
 
@@ -41,6 +42,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
    * Click **Get you first Twilio phone number**.
 
      > **Note:** Twilio will pre-select a phone number.  Use the number it gives you.
+     {: .blockquote .alert-info }
    * Click **Choose this number**:
 
      ![]({{site.baseurl}}/img/twilio-phone-number.png)
@@ -48,6 +50,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
    * Copy aside the phone number.
 
      > **Note:** This phone number will be used for the **Twilio From Phone Number** ARM template parameter.
+     {: .blockquote .alert-info }
 
 ## Verify a phone number
 
