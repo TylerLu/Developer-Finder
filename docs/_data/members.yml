@@ -1,10 +1,11 @@
 - name: Todd Baginski
+  id: 1407310
   company: Canviz
   github: tbag
   twitter: toddbaginski
-  gravatarEmailHash: 7b912926d54298ef520ee689c3d20e73
   role: Project Lead, Architect, Documentation
 - name: Tyler Lu
+  id: 11844726
   company: Canviz
   role: Architect / Developer Lead
   github: TylerLu

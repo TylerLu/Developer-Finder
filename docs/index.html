@@ -77,7 +77,7 @@ author_github: syntaxc4
     <div class="card-columns">
         {% for member in site.data.members %}
         <div class="card">
-            <img class="card-img-top" src="https://gravatar.com/avatar/{{ member.gravatarEmailHash }}?d=mm" alt="Card image cap">
+            <img class="card-img-top" src="https://avatars.githubusercontent.com/u/{{ member.id }}?s=80" alt="Card image cap">
             <div class="card-block">
                 <h4 class="card-title">{{ member.name }}</h4>
                 <p class="card-text"><small class="text-muted">{{member.role}}</small><br><small>{{ member.company }}</small></p>
