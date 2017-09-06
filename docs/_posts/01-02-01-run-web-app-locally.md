@@ -24,7 +24,7 @@ category: RUN
 
 3. Register OAuth applications.
 
-   Follow [Register OAuth applications]({{'/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications with the following parameters:
+   Follow [Register OAuth applications]({{'/setup/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications with the following parameters:
 
    * GitHub OAuth Application:
 
