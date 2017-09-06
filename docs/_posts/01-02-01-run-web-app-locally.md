@@ -17,6 +17,7 @@ category: RUN
    We will build the Dockerfile and run the Docker image locally. Two ports of  local computer are required to be mapped to ports inside the Docker container.
 
    * Web App Port: for example 8080
+
    * SSH Port: for example 22
 
    Please choose two ports that are not used by other processes.
@@ -26,12 +27,19 @@ category: RUN
    Follow [Register OAuth applications]({{'/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications with the following parameters:
 
    * GitHub OAuth Application:
+
      * Name: Developer Finder - Local
+
      * Homepage: http://127.0.0.1:<*Web-App-Port*>
+
      * Callback URL: http://127.0.0.1:<*Web-App-Port*>/complete/github/
+
    * LinkedIn OAuth Application:
+
      * Name: Developer Finder - Local
+
      * Website URL: http://127.0.0.1:<*Web-App-Port*>
+     
      * Redirect URL: http://127.0.0.1:<*Web-App-Port*>/complete/linkedin-oauth2/
 
 4. Clone or download the source code to you computer.
