@@ -69,5 +69,3 @@ category: SETUP
 5. Click **Purchase**.
 
 6. Wait until the ARM template deployment process completes.
-
-*TODO: fail*
