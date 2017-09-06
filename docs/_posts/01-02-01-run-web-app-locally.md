@@ -10,7 +10,7 @@ category: RUN
 
 1. Install Docker.
 
-   To run the the Web App locally, please install Docker first. The Docker Community Edition is sufficent. You can get it by: https://www.docker.com/community-edition.
+   To run the the Web App locally, please install Docker first. The Docker Community Edition is sufficent. You can get it by: [https://www.docker.com/community-edition](https://www.docker.com/community-edition).
 
 2. Choose 2 ports.
 
@@ -23,13 +23,13 @@ category: RUN
 
 3. Register OAuth applications.
 
-   Follow [Register OAuth applications]({{'2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications. Please use the following parameters:
+   Follow [Register OAuth applications]({{'/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications. Please use the following parameters:
 
    |                       | GitHub OAuth Application                 | LinkedIn OAuth Application               |
    | --------------------- | ---------------------------------------- | ---------------------------------------- |
    | Name                  | Developer Finder - Local                 | Developer Finder - Local                 |
-   | Homepage/Website URL  | http://127.0.0.1:<Web-App-Port>          | http://127.0.0.1:<Web-App-Port>          |
-   | Callback/redirect URL | http://127.0.0.1:<Web-App-Port>/complete/github/ | http://127.0.0.1:<Web-App-Port>/complete/linkedin-oauth2/ |
+   | Homepage/Website URL  | http://127.0.0.1:<*Web-App-Port*>        | http://127.0.0.1:<*Web-App-Port*>        |
+   | Callback/Redirect URL | http://127.0.0.1:<*Web-App-Port*>/complete/github/ | http://127.0.0.1:<*Web-App-Port*>/complete/linkedin-oauth2/ |
    {: .table .table-sm .table-striped}
 
 4. Clone or download the source code to you computer.
@@ -71,7 +71,7 @@ category: RUN
    > -e MYSQL_PASSWORD=<Your-MySQL-Password> \ 
    > -e MYSQL_DATABASE=<Your-MySQL-Database> \  
    > ```
-   {: .blockquote .alert-info}
+   > {: .blockquote .alert-info}
 
 4. Open [http://127.0.0.1:<Web-App-Port>]() in you browser.
 
