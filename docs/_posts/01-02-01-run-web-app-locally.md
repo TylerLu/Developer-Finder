@@ -23,14 +23,16 @@ category: RUN
 
 3. Register OAuth applications.
 
-   Follow [Register OAuth applications]({{'/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications. Please use the following parameters:
+   Follow [Register OAuth applications]({{'/2001/01/02/register-oauth-applications.html' | prepend: site.baseurl}}) to register GitHub and LinkedIn OAuth Applications with the following parameters:
 
-   |                       | GitHub OAuth Application                 | LinkedIn OAuth Application               |
-   | --------------------- | ---------------------------------------- | ---------------------------------------- |
-   | Name                  | Developer Finder - Local                 | Developer Finder - Local                 |
-   | Homepage/Website URL  | http://127.0.0.1:<*Web-App-Port*>        | http://127.0.0.1:<*Web-App-Port*>        |
-   | Callback/Redirect URL | http://127.0.0.1:<*Web-App-Port*>/complete/github/ | http://127.0.0.1:<*Web-App-Port*>/complete/linkedin-oauth2/ |
-   {: .table .table-sm .table-striped}
+   * GitHub OAuth Application:
+     * Name: Developer Finder - Local
+     * Homepage: http://127.0.0.1:<*Web-App-Port*>
+     * Callback URL: http://127.0.0.1:<*Web-App-Port*>/complete/github/
+   * LinkedIn OAuth Application:
+     * Name: Developer Finder - Local
+     * Website URL: http://127.0.0.1:<*Web-App-Port*>
+     * Redirect URL: http://127.0.0.1:<*Web-App-Port*>/complete/linkedin-oauth2/
 
 4. Clone or download the source code to you computer.
 
@@ -73,7 +75,7 @@ category: RUN
    > ```
    > {: .blockquote .alert-info}
 
-4. Open [http://127.0.0.1:<Web-App-Port>]() in you browser.
+4. Open [http://127.0.0.1:<*Web-App-Port*>]() in you browser.
 
 
 ## Stop the Docker container
