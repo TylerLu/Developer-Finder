@@ -13,7 +13,7 @@ It does not include an authorization/authentication module, and has no user inte
 * Built on [Ruby](https://www.ruby-lang.org/en/).
 * Uses a [PostgreSQL database](https://www.postgresql.org/). 
 
-The Ruby Chat app exposes the following APIs:
+The Ruby Chat App exposes the following APIs:
 
 | Action | Path                                     | Description         |
 | ------ | ---------------------------------------- | ------------------- |
@@ -22,4 +22,7 @@ The Ruby Chat app exposes the following APIs:
 | GET    | /api/messages/unread?from=*\<sender_id\>*&to=*\<receiver_id\>* | Get unread messages |
 {: .table .table-sm .table-striped}
 
-*TODO: prebuilt docker image*
+> Note: the Ruby Chat is built into a Docker image and pushed to Docker Hub:
+>
+> https://hub.docker.com/r/appsvc/demoapp-rubychat/
+{: .blockquote .alert-info}
