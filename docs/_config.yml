@@ -12,6 +12,6 @@ defaults:
     values:
       layout: "default"
       author: Todd Baginski
-      author_github: TylerLu
+      author_github: tbag
 keep_files: ['app_data/jobs/triggered','app_data/jobs/continuous']
 baseurl: /Developer-Finder

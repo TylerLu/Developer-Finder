@@ -14,7 +14,7 @@ category: SETUP
 
 3. Fill in the values in the deployment page:
 
-  ![]({{site.baseurl}}/img/azure-deploy-basic.png)
+    ![]({{site.baseurl}}/img/azure-deploy-basic.png)
 
    * Resource group: 
 
@@ -22,10 +22,10 @@ category: SETUP
 
    * Location: 
 
-     > **IMPORTANT NOTE: Web Apps for Containers are currently (as of September 2017) not available in all regions.** You must choose one of the regions listed in [this article](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-linux-intro).
+     > **IMPORTANT NOTE: Web App for Containers are currently (as of September 2017) not available in all regions.** You must choose one of the regions listed in [this article](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-linux-intro).
      {: .blockquote .alert-danger }
 
-  ![]({{site.baseurl}}/img/azure-deploy-settings.png)
+    ![]({{site.baseurl}}/img/azure-deploy-settings.png)
 
    * Web App Name: 
 
@@ -69,5 +69,3 @@ category: SETUP
 5. Click **Purchase**.
 
 6. Wait until the ARM template deployment process completes.
-
-*TODO: fail*

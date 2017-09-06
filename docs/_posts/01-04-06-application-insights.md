@@ -16,6 +16,7 @@ The following table describes the custom events logged to Application Insights a
 | Python Web App  | Python REST API, Function, and Logic App Calls |
 | Python REST API | Python REST API, Function, and Logic App Calls |
 | Logic App       | Start, Events Taking Place In Logic App, Complete |
+{: .table .table-sm .table-striped}
 
 This image shows custom events logged to Application Insights.
 

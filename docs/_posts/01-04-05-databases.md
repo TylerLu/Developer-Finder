@@ -18,6 +18,7 @@ The MySQL Database is used by the Web App. It contains the following tables.
 | profile        | Stores users' profiles                   |
 | position       | Stores users' positions<br>It contains a foreign key column profile_id referencing the primary key column of the profile table. |
 | friend         | Stores friends relationship <br>Its 2 columns, user_id and friend_id, are foreign keys referencing the primary key column of the user table |
+{: .table .table-sm .table-striped}
 
 >**Note:** In a true production environment, the data in the usersocialauth table would most likely be stored in a separate database to make the solution more secure.  In this sample, it is stored in the same database to simplify the solution and the deployment process.
 {: .blockquote .alert-info}
@@ -58,3 +59,4 @@ The PostgreSQL database is used by the Chat App. It is very simple and only cont
 | -------------------- | ----------------------------------- |
 | messages             | Stores all the messages             |
 | message_read_records | Records users' last read message id |
+{: .table .table-sm .table-striped}
