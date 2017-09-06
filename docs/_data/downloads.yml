@@ -6,7 +6,7 @@
   path: /Developer-Finder/assets/Diagrams.vsdx
 - name: Developer Finder Flow <small>(Image/Png)</small>
   description: This download provides a flow diagram of how data flows through the application.
-  path: /Developer-Finder/assets/Azure%20Web%20App%20On%20Linux.png
+  path: /Developer-Finder/assets/flow.png
 - name: Demo Script <small>(PDF)</small>
   description: This download provides step-by-step instructions for walking through the application.
   path: /Developer-Finder/assets/Demo%20Script.pdf
