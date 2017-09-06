@@ -103,7 +103,7 @@ category: RUN
    d8ac8bd6fbab        developer-finder    "/opt/startup.sh"   4 minutes ago
    ```
 
-3.  Copy the value of CONTAINER ID, then run:
+3. Copy the value of CONTAINER ID, then run:
 
    ```Sh
    docker stop <CONTAINER ID>
