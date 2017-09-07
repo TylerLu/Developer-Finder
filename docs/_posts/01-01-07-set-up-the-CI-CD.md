@@ -42,6 +42,6 @@ category: SETUP
 9. Click **OK**.
 
    > **Note:** It takes a few minutes to finish:
-   {: .blockquote .alert-warning }
+   {: .blockquote .alert-info }
 
    ![]({{site.baseurl}}/img/configure-cd-done.png)
