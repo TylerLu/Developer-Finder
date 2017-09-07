@@ -82,6 +82,7 @@ category: RUN
    > -e MYSQL_DATABASE=<Your-MySQL-Database> \  
    > ```
    > {: .blockquote .alert-info}
+   {: .blockquote .alert-info }
 
 4. Open [http://127.0.0.1:<*Web-App-Port*>]() in your web browser.
 
