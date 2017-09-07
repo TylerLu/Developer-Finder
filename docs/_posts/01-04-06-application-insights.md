@@ -21,6 +21,6 @@ This image shows custom events logged to Application Insights.
 
 ![]({{site.baseurl}}/img/application-insights-1.jpg)
 
-The following image shows the detail of a custom event.  In this example, the /api/messages/summary Python REST API was successfully invoked.
+The following image shows the detail of a custom event. In this example, the `/api/messages/summary` Python REST API was successfully invoked.
 
 ![]({{site.baseurl}}/img/application-insights-2.jpg)
