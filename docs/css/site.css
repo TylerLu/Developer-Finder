@@ -46,7 +46,7 @@ li {
     line-height: 1.5em;
 }
 
-li p {
+li p, blockquote p {
     margin: 0;
 }
 
@@ -57,7 +57,7 @@ pre {
 
 .blockquote {
     padding: 0.5em 1em;
-    margin: 0.5em;
+    margin: 0.5em 0;
 }
 
 img {
