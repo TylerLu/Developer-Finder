@@ -33,7 +33,7 @@ category: SETUP
 
    * Web App Location: 
 
-     > **IMPORTANT NOTE: You **MUST choose a different region for the web application**, because they cannot be created in the same region and the same resource group.
+     > **IMPORTANT NOTE: You MUST choose a different region for the web application**, because they cannot be created in the same region and the same resource group.
      {: .blockquote .alert-danger }
 
    * OAuth Git Hub Client Id & Secret: 
