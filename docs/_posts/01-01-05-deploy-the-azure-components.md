@@ -18,12 +18,12 @@ category: SETUP
 
    * Resource group: 
 
-     We suggest you create a new resource group and name it **DeveloperFinderRG**.
+     We suggest you create a new resource group and name it **DeveloperFinder[Suffix]**.
 
    * Location: 
 
      > **IMPORTANT NOTE: Web App for Containers are currently (as of September 2017) not available in all regions.** You must choose one of the regions listed in [this article](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-linux-intro).
-     {: .blockquote .alert-danger }
+     > {: .blockquote .alert-danger }
 
      ![]({{site.baseurl}}/img/azure-deploy-settings.png)
 
@@ -34,7 +34,7 @@ category: SETUP
    * Web App Location: 
 
      > **IMPORTANT NOTE: You **MUST choose a different region for the web application**, because they cannot be created in the same region and the same resource group.
-     {: .blockquote .alert-danger }
+     > {: .blockquote .alert-danger }
 
    * OAuth Git Hub Client Id & Secret: 
 
@@ -58,7 +58,7 @@ category: SETUP
 
    * Twilio Account SID & Auth Token & From Phone Number.
 
-     Use the values you got from you Twilio account.
+     They are optional. Use the values you got from your Twilio account.
 
    * Source Code Repository URL:
 
