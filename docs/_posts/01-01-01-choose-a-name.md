@@ -22,8 +22,10 @@ Below are some examples:
 
 In this document, we use the first example to show you how to deploy the solution to Azure. When you are finished with the deployment, you will be able to browse to the web application by navigating to this URL in a web browser:
 
-	https://developer-finder-[suffix].azurewebsites.net
+> https://developer-finder-[suffix].azurewebsites.net
+{: .blockquote .alert-info }
 
-​	Example that matches the example in this document: 
-
-	https://developer-finder-contoso.azurewebsites.net
+​Example that matches the example in this document: 
+ 
+> https://developer-finder-contoso.azurewebsites.net
+{: .blockquote .alert-info }
