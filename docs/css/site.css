@@ -28,3 +28,21 @@ img {
 dl > dd {
     padding-left: 40px;
 }
+
+/**/
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0.33rem;
+}
+
+p {
+    margin: 0.5rem;
+    line-height: 1.5rem;
+}
+
+li {
+    margin: 0.5rem;
+    line-height: 1.5rem;
+}
+
