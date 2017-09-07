@@ -32,7 +32,7 @@ dl > dd {
 /**/
 
 h2, h3, h4 {
-    margin-top: 1em 0 0.5em 0;
+    margin: 1em 0 0.5em 0;
     font-size: 1.5rem;
 }
 
@@ -41,8 +41,8 @@ p {
     line-height: 1.5em;  
 } 
 
-pre, li {
-    margin: 0;
+li {
+    margin: 0.125em 0;
     line-height: 1.5em;
 }
 
@@ -50,8 +50,14 @@ li p {
     margin: 0;
 }
 
+pre {
+    margin: 0;
+    line-height: 1.5em;
+}
+
 blockquote {
     padding: 0 1em;
+    margin-bottom: 0;
 }
 
 img {
