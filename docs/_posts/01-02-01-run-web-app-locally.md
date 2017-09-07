@@ -81,8 +81,7 @@ category: RUN
    > -e MYSQL_PASSWORD=<Your-MySQL-Password> \ 
    > -e MYSQL_DATABASE=<Your-MySQL-Database> \  
    > ```
-   > {: .blockquote .alert-info}
-   {: .blockquote .alert-info }
+   {: .blockquote .alert-info}
 
 4. Open [http://127.0.0.1:<*Web-App-Port*>]() in your web browser.
 
@@ -110,4 +109,5 @@ category: RUN
    docker stop <CONTAINER ID>
    ```
 
-   Please replace <*CONTAINER ID*> with the container ID you copied.
+   > Please replace <*CONTAINER ID*> with the container ID you copied.
+   {: .blockquote .alert-info}
