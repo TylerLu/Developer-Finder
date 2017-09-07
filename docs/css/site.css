@@ -31,7 +31,7 @@ dl > dd {
 
 /**/
 
-h2, h3, h4, {
+h2, h3, h4 {
     margin-top: 1em 0 0.5em 0;
     font-size: 1.5rem;
 }
@@ -44,6 +44,10 @@ p {
 pre, li {
     margin: 0;
     line-height: 1.5em;
+}
+
+li p {
+    margin: 0;
 }
 
 blockquote {
