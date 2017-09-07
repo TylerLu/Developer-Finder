@@ -58,12 +58,8 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
    * Website URL: **https://developer-finder-[suffix].azurewebsites.net**
       > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-      >
-      > **Example:**  
-      >
-      > ```
-      > https://developer-finder-contoso.azurewebsites.net
-      > ```
+      > **Example:**
+      > `https://developer-finder-contoso.azurewebsites.net`
       {: .blockquote .alert-info }
 
 4. Input the other required fields, then click **Submit**.
@@ -73,10 +69,8 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
    **https://developer-finder-[suffix].azurewebsites.net/complete/linkedin-oauth2/**
 
    > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
-   >
    > **Example:**
-   >
-   > 	https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
+   > `https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/`
    {: .blockquote .alert-info }
 
 6. Click **Update**.
