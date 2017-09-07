@@ -62,7 +62,7 @@ description:
             <div class="card-block">
                 <h4 class="card-title">{{item.name}}</h4>
                 <p class="card-text"><small class="text-muted">{{ item.description }}</small></p>
-                <a href="{{item.path}}" class="btn btn-success">Download</a>
+                <a href="{{item.path | prepend: site.baseurl}}" class="btn btn-success">Download</a>
             </div>
         </div>
         {% endfor %}
