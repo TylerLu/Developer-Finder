@@ -31,12 +31,19 @@ dl > dd {
 
 /**/
 
-h2, h3, h4, p, li, pre{
-    margin: 0.5em 0;
+h2, h3, h4, {
+    margin-top: 1em 0 0.5em 0;
+    font-size: 1.5rem;
+}
+
+p, pre, li {
     line-height: 1.5em;
 }
 
-h2 {
-    margin-top: 1em;
-    font-size: 1.5rem;
+blockquote {
+    padding: 0 1em;
+}
+
+img {
+    margin: 0;
 }
