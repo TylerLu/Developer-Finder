@@ -19,7 +19,9 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
    * Homepage URL: **https://developer-finder-[suffix].azurewebsites.net**
 
       > **Note:** Replace the **[suffix]** placeholder with the one you choose to use. Use this same value throughout the deployment process.
+      > 
       > **Example:**
+      > 
       >   https://developer-finder-contoso.azurewebsites.net
       {: .blockquote .alert-info }
 
@@ -28,7 +30,9 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
      **https://developer-finder-[suffix].azurewebsites.net/complete/github/**
 
      > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+     > 
      > **Example:**
+     > 
      >   https://developer-finder-contoso.azurewebsites.net/complete/github/
      {: .blockquote .alert-info }
 
@@ -54,7 +58,9 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
    * Website URL: **https://developer-finder-[suffix].azurewebsites.net**
       > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+      > 
       > **Example:**
+      > 
       >   https://developer-finder-contoso.azurewebsites.net
       {: .blockquote .alert-info }
 
@@ -65,7 +71,9 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
    **https://developer-finder-[suffix].azurewebsites.net/complete/linkedin-oauth2/**
 
    > **Note:** Replace the **[suffix]** placeholder with the one you choose to use.  Use this same value throughout the deployment process.
+   > 
    > **Example:**
+   > 
    >   https://developer-finder-contoso.azurewebsites.net/complete/linkedin-oauth2/
    {: .blockquote .alert-info }
 
