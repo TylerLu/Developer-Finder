@@ -67,3 +67,7 @@ img {
 table {
     margin: 0.5em 0;
 }
+
+img.card-img-top {
+    margin: 10px;
+}
