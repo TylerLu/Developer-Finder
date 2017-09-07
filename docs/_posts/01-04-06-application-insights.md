@@ -1,7 +1,6 @@
 ---
 title: Application Insights
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 

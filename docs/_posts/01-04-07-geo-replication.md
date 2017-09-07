@@ -1,7 +1,6 @@
 ---
 title: Geo-Replication
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 

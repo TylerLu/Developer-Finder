@@ -1,7 +1,6 @@
 ---
 title: Databases
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Chat App
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 

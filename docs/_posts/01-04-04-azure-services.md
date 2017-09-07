@@ -1,7 +1,6 @@
 ---
 title: Azure Services
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 

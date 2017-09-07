@@ -1,7 +1,6 @@
 ---
 title: Containers
 description:
-author: Todd Baginski
 category: ARCHITECTURE
 ---
 
