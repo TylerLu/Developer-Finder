@@ -23,5 +23,5 @@ The Chat App exposes the following APIs:
 
 > **Note**: the Chat App is built into a Docker image and pushed to Docker Hub:
 >
->  https://hub.docker.com/r/appsvc/demoapp-rubychat/
+>  [https://hub.docker.com/r/appsvc/demoapp-rubychat/](https://hub.docker.com/r/appsvc/demoapp-rubychat/)
 {: .blockquote .alert-info}

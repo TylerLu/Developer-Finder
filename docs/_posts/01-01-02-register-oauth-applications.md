@@ -46,7 +46,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
 
 1. Sign into LinkedIn.
 
-2. Open https://www.linkedin.com/developer/apps/new
+2. Open [https://www.linkedin.com/developer/apps/new](https://www.linkedin.com/developer/apps/new)
 
 3. Fill the form with the following information:
 

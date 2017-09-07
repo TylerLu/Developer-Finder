@@ -8,7 +8,7 @@ category: SETUP
 
 1. Generate Token:
 
-   - Open https://github.com/settings/tokens in your web browser.
+   - Open [https://github.com/settings/tokens](https://github.com/settings/tokens) in your web browser.
 
    - Sign into GitHub.
 
@@ -31,7 +31,7 @@ category: SETUP
 
 2. Add the GitHub Token to Azure in the Azure Resource Explorer:
 
-   * Open https://resources.azure.com/providers/Microsoft.Web/sourcecontrols/GitHub in your web browser
+   * Open [https://resources.azure.com/providers/Microsoft.Web/sourcecontrols/GitHub](https://resources.azure.com/providers/Microsoft.Web/sourcecontrols/GitHub) in your web browser
 
    * Log in with your Azure account
 

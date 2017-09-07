@@ -17,7 +17,7 @@ If you wish to enable the SMS capabilities in the application you must create a 
 
 1. Register a trial account
 
-   * Open https://www.twilio.com/, then click **Get a free API key**. 
+   * Open [https://www.twilio.com/](https://www.twilio.com/), then click **Get a free API key**. 
    * You will be redirected to **Sign up for free page**. Fill in the form, then click **Get Started**.
    * Twilio will show a page verify you're a human. Finish it.
 
