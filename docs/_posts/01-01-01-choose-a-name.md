@@ -8,7 +8,7 @@ category: SETUP
 
 The name of the application is 'Developer Finder'. We suggest you follow the naming convention below when creating your instance of the application:
 
-​	**developer-finder-[suffix]**
+​  **developer-finder-[suffix]**
 
 The suffix is used to avoid Azure resource naming conflicts. 
 
