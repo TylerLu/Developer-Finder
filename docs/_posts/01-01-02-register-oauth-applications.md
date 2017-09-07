@@ -64,6 +64,7 @@ To start, you must register OAuth applications for GitHub and LinkedIn. These OA
       > ```
       > https://developer-finder-contoso.azurewebsites.net
       > ```
+      {: .blockquote .alert-info }
 
 4. Input the other required fields, then click **Submit**.
 
