@@ -31,18 +31,11 @@ dl > dd {
 
 /**/
 
+h2, h3, h4, p, li, pre{
+    margin: 0.5em 0;
+    line-height: 1.5em;
+}
+
 h2 {
     font-size: 1.5rem;
-    margin: 0.33rem;
 }
-
-p {
-    margin: 0.5rem;
-    line-height: 1.5rem;
-}
-
-li {
-    margin: 0.5rem;
-    line-height: 1.5rem;
-}
-
