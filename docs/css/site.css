@@ -31,9 +31,9 @@ dl > dd {
 
 /**/
 
-h2, h3, h4 {
+h2 {
     margin: 1em 0 0.5em 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 p {
@@ -42,7 +42,7 @@ p {
 } 
 
 li {
-    margin: 0.125em 0;
+    margin: 0.25em 0;
     line-height: 1.5em;
 }
 
@@ -55,11 +55,11 @@ pre {
     line-height: 1.5em;
 }
 
-blockquote {
+.blockquote {
     padding: 0 1em;
-    margin-bottom: 0;
+    margin: 0.5em;
 }
 
 img {
-    margin: 0;
+    margin: 0.5em 0;
 }
